@@ -14,9 +14,39 @@ import {
   StatusBar,
   Navigator,
   TouchableHighlight,
-  TouchableOpacity
+  TouchableOpacity,
+  ScrollView
 } from 'react-native';
 
+var Thumb = React.createClass({
+  shouldComponentUpdate: function(nextProps, nextState) {
+    return false;
+  },
+  render: function() {
+    return (
+      <View style={styles.button}>
+        <Text>
+          {this.props.data}
+        </Text>
+      </View>
+    );
+  }
+});
+
+const myData = ['111', '123', '456', 'asd', 'asd', 'asd', 'asd', 'asd']
+
+const HorizontalBar = ({ data }) => (
+  <View>
+    <ScrollView
+      horizontal={true}
+      style={[styles.scrollView, styles.horizontalScrollView]}
+      borderWidth={5}
+      automaticallyAdjustContentInsets={false}
+    >
+      {data.map((x) => <Thumb data={x}/>)}
+    </ScrollView>
+  </View>
+)
 
 class AwesomeProject extends Component {
   render() {
@@ -33,6 +63,7 @@ class AwesomeProject extends Component {
     renderScene(route, navigator) {
       return (
         <View style={{flex: 1, alignItems: 'center', justifyContent:'center'}}>
+          <HorizontalBar data={myData}/>
           <TouchableHighlight style={{backgroundColor: 'yellow', padding: 10}}
               onPress={this.gotoPersonPage.bind(this)}>
             <Text style={{backgroundColor: 'yellow', color: 'green'}}>Center</Text>
@@ -55,7 +86,7 @@ var NavigationBarRouteMapper = {
   RightButton(route, navigator, index, navState) {
     return null;
   },
-  Title(route, navigator, index, navState) {
+  sdTitle(route, navigator, index, navState) {
     return (
       <TouchableOpacity style={{flex: 1, justifyContent: 'center'}}>
         <Text style={{color: 'white', margin: 10, fontSize: 16}}>
@@ -65,5 +96,21 @@ var NavigationBarRouteMapper = {
     );
   }
 };
+var styles = StyleSheet.create({
+  scrollView: {
+    backgroundColor: '#6A85B1',
+    height: 300,
+  },
+  horizontalScrollView: {
+    height: 120,
+  },
+  button: {
+    margin: 7,
+    padding: 5,
+    alignItems: 'center',
+    backgroundColor: '#eaeaea',
+    borderRadius: 3,
+  },
+});
 
 AppRegistry.registerComponent('AwesomeProject', () => AwesomeProject);
