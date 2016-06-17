@@ -12,32 +12,80 @@ import {
   View,
   Image,
   StatusBar,
-  Navigator
+  Navigator,
+  TouchableHighlight,
+  TouchableOpacity
 } from 'react-native';
 
+const Main = () => (
+  <View style={styles.container}>
+    <Text>
+      Main!
+    </Text>
+  </View>
+)
+
+const Home = () => (
+    <Text>
+      Home!
+    </Text>
+)
+
+const TopBar = ({navigator, navState}) => (
+  <Text> AUSHDUAHSUHDUHD </Text>
+)
+
+var NavigationBarRouteMapper = {
+  LeftButton(route, navigator, index, navState) {
+    return (
+      <TouchableOpacity style={{flex: 1, justifyContent: 'center'}}
+          onPress={() => navigator.parentNavigator.pop()}>
+        <Text style={{color: 'white', margin: 10,}}>
+          返回
+        </Text>
+      </TouchableOpacity>
+    );
+  },
+  RightButton(route, navigator, index, navState) {
+    return null;
+  },
+  Title(route, navigator, index, navState) {
+    return (
+      <TouchableOpacity style={{flex: 1, justifyContent: 'center'}}>
+        <Text style={{color: 'white', margin: 10, fontSize: 16}}>
+          主页
+        </Text>
+      </TouchableOpacity>
+    );
+  }
+};
 
 class AwesomeProject extends Component {
-  navigatorRenderScene(route, navigator) {
-    _navigator = navigator;
-    switch (route.id) {
-      case 'first':
-        return (<Text navigator={navigator} title="first">First</Text>);
-      case 'second':
-        return (<Text navigator={navigator} title="second">Second</Text>);
-    }
-  }
   render() {
     return (
-      <View style={styles.container}>
-        <StatusBar
-          backgroundColor="blue"
-          barStyle="light-content"
-        />
-        <Navigator
-          initialRoute={{id: 'first'}}
-          renderScene={this.navigatorRenderScene}/>
-      </View>
+      <Navigator
+        initialRoute={{id: 'Home', name: 'Index'}}
+        renderScene={this.renderScene.bind(this)}
+        configureScene={(route) => {
+          if (route.sceneConfig) {
+            return route.sceneConfig;
+          }
+          return Navigator.SceneConfigs.FloatFromRight;
+        }}
+        navigationBar={
+          <Navigator.NavigationBar
+            routeMapper={NavigationBarRouteMapper}
+          />
+        }
+      />
     );
+   }
+  renderScene(route, navigator) {
+    var routeId = route.id;
+    switch (route.id) {
+      case ('Home'):
+        return <Home navigator={navigator} />
+    }
   }
 }
 
