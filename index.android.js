@@ -17,7 +17,7 @@ import {
   TouchableOpacity,
   ScrollView
 } from 'react-native';
-
+/*
 var Thumb = React.createClass({
   shouldComponentUpdate: function(nextProps, nextState) {
     return false;
@@ -33,6 +33,14 @@ var Thumb = React.createClass({
   }
 });
 
+const MyThumb = ({ text }) => (
+  <View>
+    <Text>
+      {text}
+    </Text>
+  </View>
+)
+
 const myData = ['111', '123', '456', 'asd', 'asd', 'asd', 'asd', 'asd']
 
 const HorizontalBar = ({ data }) => (
@@ -43,10 +51,11 @@ const HorizontalBar = ({ data }) => (
       borderWidth={5}
       automaticallyAdjustContentInsets={false}
     >
-      {data.map((x) => <Thumb data={x}/>)}
+      {data.map((x) => <MyThumb text={x}/>)}
     </ScrollView>
   </View>
 )
+*/
 
 class AwesomeProject extends Component {
   render() {
@@ -63,7 +72,6 @@ class AwesomeProject extends Component {
     renderScene(route, navigator) {
       return (
         <View style={{flex: 1, alignItems: 'center', justifyContent:'center'}}>
-          <HorizontalBar data={myData}/>
           <TouchableHighlight style={{backgroundColor: 'yellow', padding: 10}}
               onPress={this.gotoPersonPage.bind(this)}>
             <Text style={{backgroundColor: 'yellow', color: 'green'}}>Center</Text>
