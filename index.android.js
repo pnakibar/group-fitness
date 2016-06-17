@@ -17,6 +17,7 @@ import {
   TouchableOpacity
 } from 'react-native';
 
+
 class AwesomeProject extends Component {
   render() {
       return (
@@ -24,7 +25,7 @@ class AwesomeProject extends Component {
             renderScene={this.renderScene.bind(this)}
             navigator={this.props.navigator}
             navigationBar={
-              <Navigator.NavigationBar style={{backgroundColor: '#246dd5'}}
+              <Navigator.NavigationBar style={{backgroundColor: '#CC0814'}}
                   routeMapper={NavigationBarRouteMapper} />
             } />
       );
@@ -49,14 +50,7 @@ class AwesomeProject extends Component {
 
 var NavigationBarRouteMapper = {
   LeftButton(route, navigator, index, navState) {
-    return (
-      <TouchableOpacity style={{flex: 1, justifyContent: 'center'}}
-          onPress={() => navigator.parentNavigator.pop()}>
-        <Text style={{color: 'white', margin: 10,}}>
-          Back
-        </Text>
-      </TouchableOpacity>
-    );
+    return null;
   },
   RightButton(route, navigator, index, navState) {
     return null;
@@ -65,7 +59,7 @@ var NavigationBarRouteMapper = {
     return (
       <TouchableOpacity style={{flex: 1, justifyContent: 'center'}}>
         <Text style={{color: 'white', margin: 10, fontSize: 16}}>
-          Title
+          GROUP FITNESS
         </Text>
       </TouchableOpacity>
     );
