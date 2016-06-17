@@ -14,10 +14,54 @@ import {
   StatusBar,
   Navigator,
   TouchableHighlight,
-  TouchableOpacity
+  TouchableOpacity,
+  ScrollView,
+  Dimensions
 } from 'react-native';
+const THUMBS = [
+  '1',
+  '2',
+  '3',
+  '4',
+  '5',
+  '6',
+  '7',
+  '8',
+  '9',
+  '10',
+  '11',
+  '12',
+  '13',
+  '13',
+  '13',
+  '13',
+]
 
+const Thumb = ({ text }) => (
+  <View style={styles.button}>
+    <Text>
+      {text}
+    </Text>
+  </View>
+);
 
+var createThumbRow = (text, i) => <Thumb key={i} text={text} />;
+const HorizontalTable = ({ texts }) => {
+  var _scrollView: ScrollView;
+  console.log(texts);
+  return (
+    <View>
+      <ScrollView
+        ref={(scrollView) => { _scrollView = scrollView; }}
+        onScroll={() => { console.log('onScroll!'); }}
+        horizontal={true}
+        scrollEventThrottle={200}
+        style={styles.scrollView}>
+        {texts.map((c, i) => createThumbRow(c, i))}
+      </ScrollView>
+    </View>
+  );
+}
 class AwesomeProject extends Component {
   render() {
       return (
@@ -33,6 +77,7 @@ class AwesomeProject extends Component {
     renderScene(route, navigator) {
       return (
         <View style={{flex: 1, alignItems: 'center', justifyContent:'center'}}>
+          <HorizontalTable texts={THUMBS} />
           <TouchableHighlight style={{backgroundColor: 'yellow', padding: 10}}
               onPress={this.gotoPersonPage.bind(this)}>
             <Text style={{backgroundColor: 'yellow', color: 'green'}}>Center</Text>
@@ -65,5 +110,24 @@ var NavigationBarRouteMapper = {
     );
   }
 };
+
+var styles = StyleSheet.create({
+  scrollView: {
+    backgroundColor: '#6A85B1',
+    alignSelf: "stretch",
+    width: Dimensions.get('window').width,
+  },
+  button: {
+    margin: 7,
+    padding: 5,
+    alignItems: 'center',
+    backgroundColor: '#eaeaea',
+    borderRadius: 3,
+  },
+  img: {
+    width: 64,
+    height: 64,
+  },
+})
 
 AppRegistry.registerComponent('AwesomeProject', () => AwesomeProject);
