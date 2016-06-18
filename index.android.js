@@ -28,15 +28,20 @@ const THUMBS = [...beforeToday, today, ...afterToday]
 const Thumb = ({ text }) => {
   const formatedDate = text.format('ddd D').split(' ');
   const [dayText, dayNumber] = formatedDate;
-  const s = moment().startOf('day').diff(moment(text).startOf('day')) === 0 ? [styles.button, styles.buttonSelected] :
-    styles.button
+  const isToday = moment().startOf('day').diff(moment(text).startOf('day')) === 0;
+  const boxStyle = isToday ?
+    [styles.button, styles.buttonSelected] :
+    styles.button;
+  const textStyle = isToday ?
+    [styles.buttonText, styles.buttonSelectedText] :
+    styles.buttonText;
 
   return (
-    <View style={s}>
-      <Text>
+    <View style={boxStyle}>
+      <Text style={textStyle}>
         {dayText.toUpperCase()}
       </Text>
-      <Text>
+      <Text style={textStyle}>
         {dayNumber}
       </Text>
     </View>
@@ -119,24 +124,32 @@ var styles = StyleSheet.create({
     alignSelf: "stretch",
     alignItems: 'center',
     justifyContent:'center',
-    height: 125,
+    height: 150,
   },
   topBarText: {
     color: "#FFF",
     fontSize: 36,
   },
-
+  buttonText: {
+    fontSize: 24,
+  },
+  buttonSelectedText: {
+    color: "#FFF",
+  },
   scrollView: {
     alignSelf: "stretch",
-    height: 100,
+    height: 140,
     width: Dimensions.get('window').width,
   },
   button: {
+    justifyContent:'center',
+    paddingTop: 35,
+    paddingBottom: 40,
     marginLeft: 1,
     marginRight: 1,
     padding: 5,
-    width: 100,
-    height: 100,
+    width: 140,
+    height: 140,
     alignItems: 'center',
     backgroundColor: '#E7E7E7',
   },
