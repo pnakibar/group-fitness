@@ -3,7 +3,8 @@ import DaySelector from '../components/DaySelector';
 
 const mapStateToProps = (state) => {
   return {
-    dates: state.get('courses').keys(),
+    dates: state.get('DaySelector').get('dates'),
+    dateSelected: state.get('DaySelector').get('dateSelected'),
   };
 };
 

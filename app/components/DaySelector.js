@@ -40,6 +40,8 @@ const Thumb = ({ date }) => {
 var createThumbRow = (date, i) => <Thumb key={i} date={date} />;
 
 const DaySelector = ({ dates }) => {
+  console.log('aushduashdudhsausdahsduah');
+  console.log(dates);
   var _scrollView: ScrollView;
   return (
     <View >
