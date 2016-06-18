@@ -15,7 +15,7 @@ import {
 } from 'react-native';
 
 const Thumb = ({ date }) => {
-  const formatedDate = date.format('ddd D').split(' ');
+  const formatedDate = moment(date).format('ddd D').split(' ');
   const [dayText, dayNumber] = formatedDate;
   const isToday = moment().startOf('day').diff(moment(date).startOf('day')) === 0;
   const boxStyle = isToday ?
