@@ -16,8 +16,8 @@ const Row = ({ date, courseName, place }) => (
     <View style={rowStyle.container}>
         <Text style={rowStyle.hour}>{date.clone().format('HH:MM A')}</Text>
         <View flexDirection="column" style={rowStyle.courseContainer}>
-          <Text style={rowStyle.course}>{courseName}</Text>
-          <Text style={rowStyle.place}>{place}</Text>
+          <Text style={rowStyle.course}>{courseName.toUpperCase()}</Text>
+        <Text style={rowStyle.place}>{place.toUpperCase()}</Text>
         </View>
         <View>
           {nextIcon}

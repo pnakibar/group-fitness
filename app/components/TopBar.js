@@ -7,7 +7,7 @@ import {
 const TopBar = ({ title }) => (
   <View style={styles.background}>
     <Text style={styles.text}>
-      {title}
+      {title.toUpperCase()}
     </Text>
   </View>
 )
