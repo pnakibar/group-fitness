@@ -6,7 +6,7 @@ import {
   StyleSheet
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-const nextIcon = (<Icon name="chevron-right" size={48} color="#900" />)
+const nextIcon = (<Icon name="chevron-right" size={48} color="#b2b2b2" />)
 
 const listEntries = [
   {
@@ -22,14 +22,14 @@ const listEntries = [
 ]
 const Row = ({ time, course, place }) => (
   <View style={rowStyle.container}>
-    <View flexDirection="row" >
       <Text style={rowStyle.hour}>{time}</Text>
       <View flexDirection="column" style={rowStyle.courseContainer}>
         <Text style={rowStyle.course}>{course}</Text>
         <Text style={rowStyle.place}>{place}</Text>
       </View>
-      {nextIcon}
-    </View>
+      <View>
+        {nextIcon}
+      </View>
   </View>
 )
 // Props filteredActivities
@@ -68,14 +68,15 @@ class DayActivitiesList extends Component {
 }
 
 var rowStyle = StyleSheet.create({
+  iconContainer: {
+    alignItems: 'flex-end',
+  },
   courseContainer: {
-    paddingLeft: 20,
+    paddingLeft: 10,
   },
   container: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    paddingRight: 10,
-    paddingLeft: 10,
     paddingBottom: 20,
     paddingTop: 20,
     borderBottomWidth: 1,
@@ -96,6 +97,7 @@ var rowStyle = StyleSheet.create({
     color: '#4a4a4a',
   },
 });
+
 var styles = StyleSheet.create({
   container: {
     flex: 1,
