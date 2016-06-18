@@ -1,16 +1,7 @@
 import React, { Component } from 'react';
 import {
-  AppRegistry,
-  StyleSheet,
   Text,
-  View,
-  Image,
-  StatusBar,
-  Navigator,
-  TouchableHighlight,
-  TouchableOpacity,
-  ScrollView,
-  Dimensions
+  View
 } from 'react-native';
 
 const TopBar = ({ title }) => (

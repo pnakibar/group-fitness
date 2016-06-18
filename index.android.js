@@ -20,6 +20,7 @@ import {
 } from 'react-native';
 
 import TopBar from './app/components/TopBar';
+import DaySelector from './app/components/DaySelector';
 
 const generateDate = (days) => moment().add(days, 'days')
 const today = moment();
@@ -51,7 +52,6 @@ const Thumb = ({ text }) => {
   )
 };
 
-var createThumbRow = (text, i) => <Thumb key={i} text={text} />;
 const HorizontalTable = ({ texts }) => {
   var _scrollView: ScrollView;
   return (
@@ -79,7 +79,7 @@ class AwesomeProject extends Component {
       return (
         <View style={{flexDirection: 'column'}}>
           <TopBar title="GROUP FITNESS" />
-          <HorizontalTable texts={THUMBS} />
+        <DaySelector dates={THUMBS} />
           <TouchableHighlight style={{backgroundColor: 'yellow', padding: 10}}
               onPress={this.gotoPersonPage.bind(this)}>
             <Text style={{backgroundColor: 'yellow', color: 'green'}}>Center</Text>
