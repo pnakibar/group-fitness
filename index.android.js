@@ -41,9 +41,9 @@ class AwesomeProject extends Component {
     }
     renderScene(route, navigator) {
       return (
-        <View style={{flexDirection: 'column'}}>
+        <View>
           <TopBar title="GROUP FITNESS" />
-        <DaySelector dates={THUMBS} />
+          <DaySelector dates={THUMBS} />
         </View>
       );
     }
