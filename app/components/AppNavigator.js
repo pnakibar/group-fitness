@@ -15,18 +15,28 @@ import {
 import ActivitiesListContainer from '../containers/ActivitiesListContainer'
 class AppNavigator extends Component {
   render() {
-      return (
-        <Navigator
-            renderScene={this.renderScene.bind(this)}
-            navigator={this.props.navigator}
-        />
-      );
+    return (
+      <Navigator
+          initialRoute={{id: 'ActivitiesListContainer', name: 'Index'}}
+          renderScene={this.renderScene.bind(this)}
+          configureScene={(route) => {
+            if (route.sceneConfig) {
+              return route.sceneConfig;
+            }
+            return Navigator.SceneConfigs.FloatFromRight;
+          }} />
+    );
+  }
+
+  renderScene(route, navigator) {
+    var routeId = route.id;
+    switch (route.id) {
+      case 'ActivitiesListContainer':
+        return (<ActivitiesListContainer navigator={navigator} />);
+      case 'ActivityMenu':
+        return (<Text>ActivityMenu</Text>)
     }
-    renderScene(route, navigator) {
-      return (
-        <ActivitiesListContainer />
-      );
-    }
+  }
 }
 
 var styles = StyleSheet.create({

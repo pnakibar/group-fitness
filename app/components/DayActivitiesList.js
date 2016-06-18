@@ -11,8 +11,8 @@ import SelectedDate from './SelectedDate'
 const nextIcon = (<Icon name="chevron-right" size={48} color="#b2b2b2" />)
 const moment = require('moment');
 
-const Row = ({ date, courseName, place }) => (
-  <TouchableHighlight onPress={() => console.log('pressed!')}>
+const Row = ({ date, courseName, place, onPress }) => (
+  <TouchableHighlight onPress={onPress}>
     <View style={rowStyle.container}>
         <View style={rowStyle.timeContainer}>
           <Text style={rowStyle.hour}>{date.clone().format('HH:MM A')}</Text>
@@ -28,38 +28,37 @@ const Row = ({ date, courseName, place }) => (
   </TouchableHighlight>
 )
 // Props filteredActivities
-class DayActivitiesList extends Component {
-  _renderRow(rowData) {
+const DayActivitiesList = ({ activities, pressRow}) => {
+  const _renderRow = (rowData) => {
     return (
       <Row
         date={rowData.date}
         courseName={rowData.courseName}
         place={rowData.place}
         style={styles.row}
+        onPress={pressRow}
       />
     );
   }
-  _renderSectionHeader(data, sectionId) {
+
+  const _renderSectionHeader = (data, sectionId) => {
     var text;
     return (
       <SelectedDate date={this.props.SelectedDate} />
     )
   }
 
-  render() {
-    const emptyDataSource = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2})
-    const dataSource = emptyDataSource.cloneWithRows(this.props.activities)
-    console.log(this.props.activities)
-    return (
-      <ListView
-        ref="DayActivitiesList"
-        automaticallyAdjustContentInsets={false}
-        dataSource={dataSource}
-        enableEmptySections={true}
-        renderRow={this._renderRow}
-      />
-    );
-  }
+  const emptyDataSource = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+  const dataSource = emptyDataSource.cloneWithRows(activities);
+
+  return (
+    <ListView
+      automaticallyAdjustContentInsets={false}
+      dataSource={dataSource}
+      enableEmptySections={true}
+      renderRow={_renderRow}
+    />
+  );
 }
 
 var rowStyle = StyleSheet.create({

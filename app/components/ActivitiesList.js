@@ -19,7 +19,13 @@ import SelectedDate from './SelectedDate';
 import DayActivitiesList from './DayActivitiesList';
 import DaySelector from './DaySelector'
 
-const ActivitiesList = ({ title, dateSelected, activities, dispatch, selectedDayActivities, uniqueDates}) => {
+const ActivitiesList = ({ title, dateSelected, activities, dispatch, selectedDayActivities, uniqueDates, navigator }) => {
+  const pushToNavigator = (idActivity) => {
+    console.log('called');
+    navigator.replace({
+      id: 'ActivityMenu',
+    })
+  }
   return (
     <View style={styles.container}>
       <View style={styles.topbar}>
@@ -33,7 +39,7 @@ const ActivitiesList = ({ title, dateSelected, activities, dispatch, selectedDay
           <SelectedDate date={dateSelected} />
         </View>
         <View style={styles.dayActivities}>
-          <DayActivitiesList activities={selectedDayActivities} />
+          <DayActivitiesList activities={selectedDayActivities} pressRow={pushToNavigator}/>
         </View>
       </View>
     </View>
