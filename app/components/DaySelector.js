@@ -1,5 +1,6 @@
 const moment = require('moment');
 import React, { Component } from 'react';
+import { selectDay } from '../actions/DaySelectorActions';
 import {
   AppRegistry,
   StyleSheet,
@@ -14,32 +15,34 @@ import {
   Dimensions
 } from 'react-native';
 
-const Thumb = ({ date }) => {
+const Thumb = ({ date, dateSelected, onPressButton}) => {
   const formatedDate = moment(date).format('ddd D').split(' ');
   const [dayText, dayNumber] = formatedDate;
-  const isToday = moment().startOf('day').diff(moment(date).startOf('day')) === 0;
-  const boxStyle = isToday ?
+  const isDateSelected = dateSelected.startOf('day').diff(moment(date).startOf('day')) === 0;
+  const boxStyle = isDateSelected ?
     [styles.date.normal.box, styles.date.selected.box] :
     styles.date.normal.box;
-  const textStyle = isToday ?
+  const textStyle = isDateSelected ?
     [styles.date.normal.text, styles.date.selected.text] :
     styles.date.normal.text;
 
   return (
-    <View style={boxStyle}>
-      <Text style={[...textStyle, styles.date.text.top]}>
-        {dayText.toUpperCase()}
-      </Text>
-      <Text style={[...textStyle, styles.date.text.bottom]}>
-        {dayNumber}
-      </Text>
-    </View>
+    <TouchableHighlight onPress={onPressButton}>
+      <View style={boxStyle}>
+        <Text style={[...textStyle, styles.date.text.top]}>
+          {dayText.toUpperCase()}
+        </Text>
+        <Text style={[...textStyle, styles.date.text.bottom]}>
+          {dayNumber}
+        </Text>
+      </View>
+    </TouchableHighlight>
   )
 };
 
-var createThumbRow = (date, i) => <Thumb key={i} date={date} />;
-
-const DaySelector = ({ dates }) => {
+const DaySelector = ({ dates, dateSelected, dispatch }) => {
+  console.log('dispatch', dispatch);
+  console.log('selectDay', selectDay);
   var _scrollView: ScrollView;
   return (
     <View >
@@ -48,7 +51,14 @@ const DaySelector = ({ dates }) => {
         horizontal={true}
         scrollEventThrottle={200}
         style={styles.scrollView}>
-        {dates.map((c, i) => createThumbRow(c, i))}
+        {dates.map((date, i) =>
+          <Thumb
+            key={i}
+            date={date}
+            dateSelected={dateSelected}
+            onPressButton={() => dispatch(selectDay(date))}
+          />
+        )}
       </ScrollView>
     </View>
   );
