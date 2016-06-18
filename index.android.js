@@ -44,40 +44,10 @@ class AwesomeProject extends Component {
         <View style={{flexDirection: 'column'}}>
           <TopBar title="GROUP FITNESS" />
         <DaySelector dates={THUMBS} />
-          <TouchableHighlight style={{backgroundColor: 'yellow', padding: 10}}
-              onPress={this.gotoPersonPage.bind(this)}>
-            <Text style={{backgroundColor: 'yellow', color: 'green'}}>Center</Text>
-          </TouchableHighlight>
         </View>
       );
     }
-    gotoPersonPage() {
-      this.props.navigator.push({
-        id: 'PersonPage',
-        name: '我的主页',
-      });
-    }
 }
 
-var NavigationBarRouteMapper = {
-  LeftButton(route, navigator, index, navState) {
-    return null;
-  },
-  RightButton(route, navigator, index, navState) {
-    return null;
-  },
-  Title(route, navigator, index, navState) {
-    return (
-      <TouchableOpacity style={{flex: 1, justifyContent: 'center'}}>
-        <Text style={{color: 'white', margin: 10, fontSize: 16}}>
-          GROUP FITNESS
-        </Text>
-      </TouchableOpacity>
-    );
-  }
-};
-
-var styles = StyleSheet.create({
-})
 
 AppRegistry.registerComponent('AwesomeProject', () => AwesomeProject);
