@@ -14,7 +14,7 @@ const moment = require('moment');
 const Row = ({ date, courseName, place }) => (
   <TouchableHighlight onPress={() => console.log('pressed!')}>
     <View style={rowStyle.container}>
-        <Text style={rowStyle.hour}>{date}</Text>
+        <Text style={rowStyle.hour}>{date.clone().format('HH:MM A')}</Text>
         <View flexDirection="column" style={rowStyle.courseContainer}>
           <Text style={rowStyle.course}>{courseName}</Text>
           <Text style={rowStyle.place}>{place}</Text>
@@ -47,6 +47,7 @@ class DayActivitiesList extends Component {
   render() {
     const emptyDataSource = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2})
     const dataSource = emptyDataSource.cloneWithRows(this.props.activities)
+    console.log(this.props.activities)
     return (
       <ListView
         ref="DayActivitiesList"
