@@ -12,8 +12,6 @@ const listEntries = [1,2,3,4,5,6,7,8,9].map((x, i) => {
     data: x,
   }
 });
-console.log(listEntries);
-
 const Row = ({ data }) => (
   <View style={styles.wrapper}>
     <View>
@@ -38,7 +36,6 @@ class DayActivitiesList extends Component {
   render() {
     const emptyDataSource = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2})
     const dataSource = emptyDataSource.cloneWithRows(listEntries)
-    console.log(this._renderRow)
     return (
       <ListView
         ref="DayActivitiesList"

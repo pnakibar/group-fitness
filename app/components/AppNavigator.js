@@ -31,7 +31,6 @@ class AppNavigator extends Component {
         <View style={styles.container}>
           <TopBar title="GROUP FITNESS" style={styles.halfHeight}/>
           <DaysSelection />
-          <SelectedDate date={new Date()}/>
           <DayActivitiesList />
         </View>
       );

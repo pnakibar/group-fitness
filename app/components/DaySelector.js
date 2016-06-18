@@ -14,8 +14,9 @@ import {
   ScrollView,
   Dimensions
 } from 'react-native';
+import SelectedDate from './SelectedDate'
 
-const Thumb = ({ date, dateSelected, onPressButton}) => {
+const Thumb = ({ date, dateSelected, onPressButton }) => {
   const formatedDate = moment(date).format('ddd D').split(' ');
   const [dayText, dayNumber] = formatedDate;
   const isDateSelected = dateSelected.startOf('day').diff(moment(date).startOf('day')) === 0;
@@ -40,17 +41,16 @@ const Thumb = ({ date, dateSelected, onPressButton}) => {
   )
 };
 
-const DaySelector = ({ dates, dateSelected, dispatch }) => {
-  console.log('dispatch', dispatch);
-  console.log('selectDay', selectDay);
+const DaySelector = ({ dates, dateSelected, dispatch, style }) => {
+  console.log('asd', style);
   var _scrollView: ScrollView;
   return (
-    <View >
+    <View style={style}>
       <ScrollView
         ref={(scrollView) => { _scrollView = scrollView; }}
         horizontal={true}
         scrollEventThrottle={200}
-        style={styles.scrollView}>
+        >
         {dates.map((date, i) =>
           <Thumb
             key={i}
@@ -60,22 +60,18 @@ const DaySelector = ({ dates, dateSelected, dispatch }) => {
           />
         )}
       </ScrollView>
+      <SelectedDate date={dateSelected} />
     </View>
   );
 };
-
 
 const styles = {
   date: {
     text: {
       top: {
         fontSize: 16,
-        marginTop: 20,
-        marginBottom: 4,
       },
       bottom: {
-        marginTop: 4,
-        marginBottom: 20,
         fontWeight: 'bold',
         fontSize: 42,
       },
@@ -91,11 +87,8 @@ const styles = {
     normal: {
       box: {
         justifyContent:'center',
-        paddingTop: 35,
-        paddingBottom: 40,
         marginLeft: 1,
         marginRight: 1,
-        padding: 5,
         width: 140,
         height: 140,
         alignItems: 'center',
