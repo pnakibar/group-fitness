@@ -14,6 +14,7 @@ import {
 } from 'react-native';
 import TopBar from './TopBar';
 import DaysSelection from '../containers/DaysSelection';
+import SelectedDate from '../components/SelectedDate'
 
 class AppNavigator extends Component {
   render() {
@@ -29,6 +30,7 @@ class AppNavigator extends Component {
         <View>
           <TopBar title="GROUP FITNESS" />
           <DaysSelection />
+          <SelectedDate date={new Date()}/>
         </View>
       );
     }
