@@ -48,9 +48,8 @@ const Thumb = ({ text }) => (
 var createThumbRow = (text, i) => <Thumb key={i} text={text} />;
 const HorizontalTable = ({ texts }) => {
   var _scrollView: ScrollView;
-  console.log(texts);
   return (
-    <View>
+    <View >
       <ScrollView
         ref={(scrollView) => { _scrollView = scrollView; }}
         onScroll={() => { console.log('onScroll!'); }}
@@ -62,21 +61,26 @@ const HorizontalTable = ({ texts }) => {
     </View>
   );
 }
+const TopBar = ({ title }) => (
+  <View style={styles.topBar}>
+    <Text style={styles.topBarText}>
+      {title}
+    </Text>
+  </View>
+)
 class AwesomeProject extends Component {
   render() {
       return (
         <Navigator
             renderScene={this.renderScene.bind(this)}
             navigator={this.props.navigator}
-            navigationBar={
-              <Navigator.NavigationBar style={{backgroundColor: '#CC0814'}}
-                  routeMapper={NavigationBarRouteMapper} />
-            } />
+        />
       );
     }
     renderScene(route, navigator) {
       return (
-        <View style={{flex: 1, alignItems: 'center', justifyContent:'center'}}>
+        <View style={{flexDirection: 'column'}}>
+          <TopBar title="GROUP FITNESS" />
           <HorizontalTable texts={THUMBS} />
           <TouchableHighlight style={{backgroundColor: 'yellow', padding: 10}}
               onPress={this.gotoPersonPage.bind(this)}>
@@ -112,9 +116,22 @@ var NavigationBarRouteMapper = {
 };
 
 var styles = StyleSheet.create({
+  topBar: {
+    justifyContent: 'center',
+    backgroundColor: '#CC0814',
+    alignSelf: "stretch",
+    alignItems: 'center',
+    justifyContent:'center',
+    height: 200,
+  },
+  topBarText: {
+    color: "#FFF",
+    fontSize: 36,
+  },
   scrollView: {
     backgroundColor: '#6A85B1',
     alignSelf: "stretch",
+    height: 100,
     width: Dimensions.get('window').width,
   },
   button: {
