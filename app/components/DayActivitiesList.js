@@ -6,7 +6,7 @@ import {
   StyleSheet
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-const nextIcon = (<Icon name="child-friendly" size={48} color="#900" />)
+const nextIcon = (<Icon name="chevron-right" size={48} color="#900" />)
 
 const listEntries = [
   {
