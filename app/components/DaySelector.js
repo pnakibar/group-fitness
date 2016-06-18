@@ -55,7 +55,7 @@ const DaySelector = ({ dates, dateSelected, dispatch }) => {
             key={i}
             date={date}
             dateSelected={dateSelected}
-            onPressButton={() => dispatch(selectDay(date))}
+            onPressButton={() => dispatch(selectDay(moment(date)))}
           />
         )}
       </ScrollView>

@@ -19,13 +19,7 @@ import SelectedDate from './SelectedDate';
 import DayActivitiesList from './DayActivitiesList';
 import DaySelector from './DaySelector'
 
-const ActivitiesList = ({ title, dateSelected, activities, dispatch}) => {
-  const uniqueDates = Set(activities.map((a) => moment(a.date).startOf('day')))
-    .toArray()
-    .sort((left, right) => {
-      return left.diff(right)
-    })
-
+const ActivitiesList = ({ title, dateSelected, activities, dispatch, selectedDayActivities, uniqueDates}) => {
   return (
     <View style={styles.container}>
       <View style={styles.topbar}>
@@ -39,7 +33,7 @@ const ActivitiesList = ({ title, dateSelected, activities, dispatch}) => {
           <SelectedDate date={dateSelected} />
         </View>
         <View style={styles.dayActivities}>
-          <DayActivitiesList />
+          <DayActivitiesList activities={selectedDayActivities} />
         </View>
       </View>
     </View>

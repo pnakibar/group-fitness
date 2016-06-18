@@ -2,10 +2,13 @@ const { List, Map } = require('immutable');
 import { SELECT_DAY } from '../actions/DaySelectorActions';
 import { combineReducers } from 'redux-immutable';
 const moment = require('moment');
-const mockup = require('./mockup.json');
+const mockup = require('./mockup.json').map((a) => {
+  a.date = moment(a.date);
+  return a;
+});
 
 const initialState = Map({
-  dateSelected: moment(),
+  dateSelected: moment().startOf('day').clone(),
   activities: mockup,
   title: 'Group Fitness'
 })

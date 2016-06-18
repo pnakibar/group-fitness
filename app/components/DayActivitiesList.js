@@ -11,45 +11,12 @@ import SelectedDate from './SelectedDate'
 const nextIcon = (<Icon name="chevron-right" size={48} color="#b2b2b2" />)
 const moment = require('moment');
 
-const listEntries = [
-  {
-    time: '11:35 AM',
-    class: 'Body Strong',
-    place: 'Cole Field House Room 5'
-  },
-  {
-    time: '11:35 AM',
-    class: 'Body Strong',
-    place: 'Cole Field House Room 5'
-  },
-  {
-    time: '11:35 AM',
-    class: 'Body Strong',
-    place: 'Cole Field House Room 5'
-  },{
-    time: '11:35 AM',
-    class: 'Body Strong',
-    place: 'Cole Field House Room 5'
-  },{
-    time: '11:35 AM',
-    class: 'Body Strong',
-    place: 'Cole Field House Room 5'
-  },{
-    time: '11:35 AM',
-    class: 'Body Strong',
-    place: 'Cole Field House Room 5'
-  },{
-    time: '11:35 AM',
-    class: 'Body Strong',
-    place: 'Cole Field House Room 5'
-  },
-]
-const Row = ({ time, course, place }) => (
+const Row = ({ date, courseName, place }) => (
   <TouchableHighlight onPress={() => console.log('pressed!')}>
     <View style={rowStyle.container}>
-        <Text style={rowStyle.hour}>{time}</Text>
+        <Text style={rowStyle.hour}>{date}</Text>
         <View flexDirection="column" style={rowStyle.courseContainer}>
-          <Text style={rowStyle.course}>{course}</Text>
+          <Text style={rowStyle.course}>{courseName}</Text>
           <Text style={rowStyle.place}>{place}</Text>
         </View>
         <View>
@@ -63,8 +30,8 @@ class DayActivitiesList extends Component {
   _renderRow(rowData) {
     return (
       <Row
-        time={rowData.time}
-        course={rowData.class}
+        date={rowData.date}
+        courseName={rowData.courseName}
         place={rowData.place}
         style={styles.row}
       />
@@ -73,18 +40,19 @@ class DayActivitiesList extends Component {
   _renderSectionHeader(data, sectionId) {
     var text;
     return (
-      <SelectedDate date={moment()} />
+      <SelectedDate date={this.props.SelectedDate} />
     )
   }
 
   render() {
     const emptyDataSource = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2})
-    const dataSource = emptyDataSource.cloneWithRows(listEntries)
+    const dataSource = emptyDataSource.cloneWithRows(this.props.activities)
     return (
       <ListView
         ref="DayActivitiesList"
         automaticallyAdjustContentInsets={false}
         dataSource={dataSource}
+        enableEmptySections={true}
         renderRow={this._renderRow}
       />
     );
