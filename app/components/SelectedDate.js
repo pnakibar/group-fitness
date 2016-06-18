@@ -7,7 +7,7 @@ import {
 const moment = require('moment');
 
 const SelectedDate = ({ date }) => (
-  <View style={styles.background}>
+  <View>
     <Text style={styles.text}>
       {moment(date).format('MMMM D, YYYY')}
     </Text>

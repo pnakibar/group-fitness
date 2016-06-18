@@ -3,10 +3,13 @@ import {
   Text,
   View,
   ListView,
-  StyleSheet
+  StyleSheet,
+  TouchableHighlight
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import SelectedDate from './SelectedDate'
 const nextIcon = (<Icon name="chevron-right" size={48} color="#b2b2b2" />)
+const moment = require('moment');
 
 const listEntries = [
   {
@@ -18,19 +21,42 @@ const listEntries = [
     time: '11:35 AM',
     class: 'Body Strong',
     place: 'Cole Field House Room 5'
-  }
+  },
+  {
+    time: '11:35 AM',
+    class: 'Body Strong',
+    place: 'Cole Field House Room 5'
+  },{
+    time: '11:35 AM',
+    class: 'Body Strong',
+    place: 'Cole Field House Room 5'
+  },{
+    time: '11:35 AM',
+    class: 'Body Strong',
+    place: 'Cole Field House Room 5'
+  },{
+    time: '11:35 AM',
+    class: 'Body Strong',
+    place: 'Cole Field House Room 5'
+  },{
+    time: '11:35 AM',
+    class: 'Body Strong',
+    place: 'Cole Field House Room 5'
+  },
 ]
 const Row = ({ time, course, place }) => (
-  <View style={rowStyle.container}>
-      <Text style={rowStyle.hour}>{time}</Text>
-      <View flexDirection="column" style={rowStyle.courseContainer}>
-        <Text style={rowStyle.course}>{course}</Text>
-        <Text style={rowStyle.place}>{place}</Text>
-      </View>
-      <View>
-        {nextIcon}
-      </View>
-  </View>
+  <TouchableHighlight onPress={() => console.log('pressed!')}>
+    <View style={rowStyle.container}>
+        <Text style={rowStyle.hour}>{time}</Text>
+        <View flexDirection="column" style={rowStyle.courseContainer}>
+          <Text style={rowStyle.course}>{course}</Text>
+          <Text style={rowStyle.place}>{place}</Text>
+        </View>
+        <View>
+          {nextIcon}
+        </View>
+    </View>
+  </TouchableHighlight>
 )
 // Props filteredActivities
 class DayActivitiesList extends Component {
@@ -44,13 +70,11 @@ class DayActivitiesList extends Component {
       />
     );
   }
-  renderSectionHeader(data, sectionId) {
+  _renderSectionHeader(data, sectionId) {
     var text;
     return (
-      <View style={styles.sectionHeader}>
-        <Text style={styles.sectionHeaderText}>{sectionId}</Text>
-      </View>
-    );
+      <SelectedDate date={moment()} />
+    )
   }
 
   render() {

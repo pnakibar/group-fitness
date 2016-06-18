@@ -29,26 +29,46 @@ class AppNavigator extends Component {
     renderScene(route, navigator) {
       return (
         <View style={styles.container}>
-          <TopBar title="GROUP FITNESS" style={styles.halfHeight}/>
-          <DaysSelection />
-          <DayActivitiesList />
+          <View style={styles.topbar}>
+            <TopBar title="GROUP FITNESS"/>
+          </View>
+          <View style={styles.daySelector}>
+            <DaysSelection />
+          </View>
+          <View style={styles.activitiesContainer}>
+            <View>
+              <SelectedDate date={new Date()} />
+            </View>
+            <View style={styles.dayActivities}>
+              <DayActivitiesList />
+            </View>
+          </View>
         </View>
       );
     }
 }
 
 var styles = StyleSheet.create({
+    activitiesContainer: {
+      flexDirection: 'column',
+      marginLeft: 12,
+      marginRight: 12,
+      marginTop: 12,
+      flex: 1,
+    },
     container: {
         flex: 1,
         flexDirection: 'column'
     },
-    halfHeight: {
-        flex: .5,
+    dayActivities: {
+      flex: 1,
     },
-    quarterHeight: {
-        flex: .25,
-        backgroundColor: '#000'
-    }
+    topbar: {
+      flex: 0.2,
+    },
+    daySelector: {
+      flex: 0.4,
+    },
 });
 
 

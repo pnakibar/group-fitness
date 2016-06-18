@@ -41,11 +41,10 @@ const Thumb = ({ date, dateSelected, onPressButton }) => {
   )
 };
 
-const DaySelector = ({ dates, dateSelected, dispatch, style }) => {
-  console.log('asd', style);
+const DaySelector = ({ dates, dateSelected, dispatch }) => {
   var _scrollView: ScrollView;
   return (
-    <View style={style}>
+    <View>
       <ScrollView
         ref={(scrollView) => { _scrollView = scrollView; }}
         horizontal={true}
@@ -60,7 +59,6 @@ const DaySelector = ({ dates, dateSelected, dispatch, style }) => {
           />
         )}
       </ScrollView>
-      <SelectedDate date={dateSelected} />
     </View>
   );
 };

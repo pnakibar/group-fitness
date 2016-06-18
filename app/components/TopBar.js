@@ -4,8 +4,8 @@ import {
   View
 } from 'react-native';
 
-const TopBar = ({ title, style }) => (
-  <View style={[style, styles.background]}>
+const TopBar = ({ title }) => (
+  <View style={styles.background}>
     <Text style={styles.text}>
       {title}
     </Text>
@@ -14,6 +14,7 @@ const TopBar = ({ title, style }) => (
 
 const styles = {
   background: {
+    flex: 1,
     justifyContent: 'center',
     backgroundColor: '#CC0814',
     alignSelf: "stretch",
