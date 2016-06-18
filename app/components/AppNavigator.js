@@ -28,8 +28,8 @@ class AppNavigator extends Component {
     }
     renderScene(route, navigator) {
       return (
-        <View>
-          <TopBar title="GROUP FITNESS" />
+        <View style={styles.container}>
+          <TopBar title="GROUP FITNESS" style={styles.halfHeight}/>
           <DaysSelection />
           <SelectedDate date={new Date()}/>
           <DayActivitiesList />
@@ -37,5 +37,20 @@ class AppNavigator extends Component {
       );
     }
 }
+
+var styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        flexDirection: 'column'
+    },
+    halfHeight: {
+        flex: .5,
+    },
+    quarterHeight: {
+        flex: .25,
+        backgroundColor: '#000'
+    }
+});
+
 
 export default AppNavigator;
