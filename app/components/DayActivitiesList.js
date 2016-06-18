@@ -72,7 +72,7 @@ var rowStyle = StyleSheet.create({
     alignItems: 'flex-end',
   },
   courseContainer: {
-    paddingLeft: 10,
+    paddingLeft: 0,
   },
   container: {
     flexDirection: 'row',
