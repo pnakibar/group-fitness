@@ -2,6 +2,17 @@ const { List, Map } = require('immutable');
 import { SELECT_DAY } from '../actions/DaySelectorActions';
 import { combineReducers } from 'redux-immutable';
 const moment = require('moment');
+const mockup = require('./mockup.json');
+
+const mockupF = mockup.reduce((acc, a) => {
+  const date = moment(a.date).startOf('day');
+  if (!acc[date.toString()]) {
+    acc[date.toString()] = [];
+  };
+  acc[date.toString()].push(a)
+  return acc;
+}, {})
+
 
 const today = moment();
 const numberOfDays = [1,2,3,4,5];
