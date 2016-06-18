@@ -18,6 +18,9 @@ import {
   ScrollView,
   Dimensions
 } from 'react-native';
+
+import TopBar from './app/components/TopBar';
+
 const generateDate = (days) => moment().add(days, 'days')
 const today = moment();
 const numberOfDays = [1,2,3,4,5];
@@ -63,13 +66,6 @@ const HorizontalTable = ({ texts }) => {
     </View>
   );
 }
-const TopBar = ({ title }) => (
-  <View style={styles.topBar}>
-    <Text style={styles.topBarText}>
-      {title}
-    </Text>
-  </View>
-)
 class AwesomeProject extends Component {
   render() {
       return (
@@ -118,21 +114,6 @@ var NavigationBarRouteMapper = {
 };
 
 var styles = StyleSheet.create({
-  topBar: {
-    justifyContent: 'center',
-    backgroundColor: '#CC0814',
-    alignSelf: "stretch",
-    alignItems: 'center',
-    justifyContent:'center',
-    height: 150,
-  },
-  topBarText: {
-    color: "#FFF",
-    fontSize: 36,
-  },
-  buttonText: {
-    fontSize: 24,
-  },
   buttonSelectedText: {
     color: "#FFF",
   },
