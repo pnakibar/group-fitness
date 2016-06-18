@@ -5,24 +5,44 @@ import {
   ListView,
   StyleSheet
 } from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialIcons';
+const nextIcon = (<Icon name="child-friendly" size={48} color="#900" />)
 
-const listEntries = [1,2,3,4,5,6,7,8,9].map((x, i) => {
-  return {
-    id: i,
-    data: x,
+const listEntries = [
+  {
+    time: '11:35 AM',
+    class: 'Body Strong',
+    place: 'Cole Field House Room 5'
+  },
+  {
+    time: '11:35 AM',
+    class: 'Body Strong',
+    place: 'Cole Field House Room 5'
   }
-});
-const Row = ({ data }) => (
-  <View style={styles.wrapper}>
-    <View>
-      <Text style={styles.text}>{data.data}</Text>
+]
+const Row = ({ time, course, place }) => (
+  <View style={rowStyle.container}>
+    <View flexDirection="row" >
+      <Text style={rowStyle.hour}>{time}</Text>
+      <View flexDirection="column" style={rowStyle.courseContainer}>
+        <Text style={rowStyle.course}>{course}</Text>
+        <Text style={rowStyle.place}>{place}</Text>
+      </View>
+      {nextIcon}
     </View>
   </View>
 )
 // Props filteredActivities
 class DayActivitiesList extends Component {
   _renderRow(rowData) {
-    return (<Row data={rowData} style={styles.row}/>);
+    return (
+      <Row
+        time={rowData.time}
+        course={rowData.class}
+        place={rowData.place}
+        style={styles.row}
+      />
+    );
   }
   renderSectionHeader(data, sectionId) {
     var text;
@@ -47,6 +67,35 @@ class DayActivitiesList extends Component {
   }
 }
 
+var rowStyle = StyleSheet.create({
+  courseContainer: {
+    paddingLeft: 20,
+  },
+  container: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingRight: 10,
+    paddingLeft: 10,
+    paddingBottom: 20,
+    paddingTop: 20,
+    borderBottomWidth: 1,
+    borderBottomColor: '#e9e9e9',
+  },
+  hour: {
+      fontSize: 24,
+      fontWeight: 'bold',
+      color: '#CC0814',
+  },
+  place: {
+    fontSize: 18,
+    color: '#a8a8a8',
+  },
+  course: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: '#4a4a4a',
+  },
+});
 var styles = StyleSheet.create({
   container: {
     flex: 1,
