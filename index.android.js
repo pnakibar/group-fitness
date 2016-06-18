@@ -3,7 +3,7 @@
  * https://github.com/facebook/react-native
  * @flow
  */
-
+const moment = require('moment')
 import React, { Component } from 'react';
 import {
   AppRegistry,
@@ -18,32 +18,30 @@ import {
   ScrollView,
   Dimensions
 } from 'react-native';
-const THUMBS = [
-  '1',
-  '2',
-  '3',
-  '4',
-  '5',
-  '6',
-  '7',
-  '8',
-  '9',
-  '10',
-  '11',
-  '12',
-  '13',
-  '13',
-  '13',
-  '13',
-]
+const generateDate = (days) => moment().add(days, 'days')
+const today = moment();
+const numberOfDays = [1,2,3,4,5];
+const beforeToday = numberOfDays.map((x) => moment(today).subtract(x, 'days')).reverse();
+const afterToday = numberOfDays.map((x) => moment(today).add(x, 'days'));
+const THUMBS = [...beforeToday, today, ...afterToday]
 
-const Thumb = ({ text }) => (
-  <View style={styles.button}>
-    <Text>
-      {text}
-    </Text>
-  </View>
-);
+const Thumb = ({ text }) => {
+  const formatedDate = text.format('ddd D').split(' ');
+  const [dayText, dayNumber] = formatedDate;
+  const s = moment().startOf('day').diff(moment(text).startOf('day')) === 0 ? [styles.button, styles.buttonSelected] :
+    styles.button
+
+  return (
+    <View style={s}>
+      <Text>
+        {dayText.toUpperCase()}
+      </Text>
+      <Text>
+        {dayNumber}
+      </Text>
+    </View>
+  )
+};
 
 var createThumbRow = (text, i) => <Thumb key={i} text={text} />;
 const HorizontalTable = ({ texts }) => {
@@ -52,7 +50,6 @@ const HorizontalTable = ({ texts }) => {
     <View >
       <ScrollView
         ref={(scrollView) => { _scrollView = scrollView; }}
-        onScroll={() => { console.log('onScroll!'); }}
         horizontal={true}
         scrollEventThrottle={200}
         style={styles.scrollView}>
@@ -122,24 +119,29 @@ var styles = StyleSheet.create({
     alignSelf: "stretch",
     alignItems: 'center',
     justifyContent:'center',
-    height: 200,
+    height: 125,
   },
   topBarText: {
     color: "#FFF",
     fontSize: 36,
   },
+
   scrollView: {
-    backgroundColor: '#6A85B1',
     alignSelf: "stretch",
     height: 100,
     width: Dimensions.get('window').width,
   },
   button: {
-    margin: 7,
+    marginLeft: 1,
+    marginRight: 1,
     padding: 5,
+    width: 100,
+    height: 100,
     alignItems: 'center',
-    backgroundColor: '#eaeaea',
-    borderRadius: 3,
+    backgroundColor: '#E7E7E7',
+  },
+  buttonSelected: {
+    backgroundColor: '#CC0814',
   },
   img: {
     width: 64,
