@@ -1,5 +1,5 @@
-import DaySelector from './DaySelectorReducer';
+import daySelectorReducer from './DaySelectorReducer';
 
 export {
-  DaySelector,
+  daySelectorReducer,
 };

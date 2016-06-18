@@ -12,11 +12,7 @@ import {
   ScrollView,
   Dimensions
 } from 'react-native';
-import TopBar from './TopBar';
-import DaysSelection from '../containers/DaysSelection';
-import SelectedDate from '../components/SelectedDate';
-import DayActivitiesList from './DayActivitiesList';
-
+import ActivitiesListContainer from '../containers/ActivitiesListContainer'
 class AppNavigator extends Component {
   render() {
       return (
@@ -28,22 +24,7 @@ class AppNavigator extends Component {
     }
     renderScene(route, navigator) {
       return (
-        <View style={styles.container}>
-          <View style={styles.topbar}>
-            <TopBar title="GROUP FITNESS"/>
-          </View>
-          <View style={styles.daySelector}>
-            <DaysSelection />
-          </View>
-          <View style={styles.activitiesContainer}>
-            <View>
-              <SelectedDate date={new Date()} />
-            </View>
-            <View style={styles.dayActivities}>
-              <DayActivitiesList />
-            </View>
-          </View>
-        </View>
+        <ActivitiesListContainer />
       );
     }
 }
@@ -53,7 +34,6 @@ var styles = StyleSheet.create({
       flexDirection: 'column',
       marginLeft: 12,
       marginRight: 12,
-      marginTop: 12,
       flex: 1,
     },
     container: {

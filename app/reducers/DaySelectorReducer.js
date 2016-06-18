@@ -4,30 +4,14 @@ import { combineReducers } from 'redux-immutable';
 const moment = require('moment');
 const mockup = require('./mockup.json');
 
-const mockupF = mockup.reduce((acc, a) => {
-  const date = moment(a.date).startOf('day');
-  if (!acc[date.toString()]) {
-    acc[date.toString()] = [];
-  };
-  acc[date.toString()].push(a)
-  return acc;
-}, {})
-
-
-const today = moment();
-const numberOfDays = [1,2,3,4,5];
-const beforeToday = numberOfDays.map((x) => moment(today).subtract(x, 'days')).reverse();
-const afterToday = numberOfDays.map((x) => moment(today).add(x, 'days'));
-const dates = [...beforeToday, today, ...afterToday]
-
 const initialState = Map({
   dateSelected: moment(),
-  courses: [],
-  dates
+  activities: mockup,
+  title: 'Group Fitness'
 })
 
 
-function DaySelector(state = initialState, action) {
+function daySelectorReducer(state = initialState, action) {
   switch (action.type) {
     case SELECT_DAY:
       return state.set('dateSelected', action.date);
@@ -36,4 +20,4 @@ function DaySelector(state = initialState, action) {
   }
 }
 
-export default DaySelector;
+export default daySelectorReducer;
