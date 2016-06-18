@@ -14,12 +14,14 @@ const moment = require('moment');
 const Row = ({ date, courseName, place }) => (
   <TouchableHighlight onPress={() => console.log('pressed!')}>
     <View style={rowStyle.container}>
-        <Text style={rowStyle.hour}>{date.clone().format('HH:MM A')}</Text>
-        <View flexDirection="column" style={rowStyle.courseContainer}>
-          <Text style={rowStyle.course}>{courseName.toUpperCase()}</Text>
-        <Text style={rowStyle.place}>{place.toUpperCase()}</Text>
+        <View style={rowStyle.timeContainer}>
+          <Text style={rowStyle.hour}>{date.clone().format('HH:MM A')}</Text>
         </View>
-        <View>
+        <View style={rowStyle.activityContainer} >
+          <Text style={rowStyle.course}>{courseName.toUpperCase()}</Text>
+          <Text style={rowStyle.place}>{place.toUpperCase()}</Text>
+        </View>
+        <View style={rowStyle.iconContainer}>
           {nextIcon}
         </View>
     </View>
@@ -61,15 +63,21 @@ class DayActivitiesList extends Component {
 }
 
 var rowStyle = StyleSheet.create({
+  timeContainer: {
+    alignItems: 'flex-start',
+    flex: 0.4,
+  },
+  activityContainer: {
+    flexDirection: "column",
+    flex: 0.6,
+  },
   iconContainer: {
     alignItems: 'flex-end',
-  },
-  courseContainer: {
-    paddingLeft: 0,
+    flex: 0.2,
   },
   container: {
+    flex: 1,
     flexDirection: 'row',
-    justifyContent: 'space-between',
     paddingBottom: 20,
     paddingTop: 20,
     borderBottomWidth: 1,
