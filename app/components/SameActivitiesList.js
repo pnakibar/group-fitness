@@ -37,6 +37,7 @@ const Row = ({ date, instructor, place}) => (
 
 )
 const SameActivitiesList = ({ activities, pressRow }) => {
+  console.log('quantity of activities', activities.length)
   const _renderRow = (rowData) => {
     return (
       <Row

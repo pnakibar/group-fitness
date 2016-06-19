@@ -4,11 +4,9 @@ const moment = require('moment');
 const { Set } = require('immutable');
 
 const mapStateToProps = (state) => {
-  const selectedActivity = state.get('daySelectorReducer').get('selectedActivity')
-  const similarActivities = state
-    .get('daySelectorReducer')
-    .get('activities')
-    .filter((a) => a.courseName === selectedActivity.courseName)
+  const selectedActivity = state.get('daySelectorReducer').get('selectedActivity');
+  const similarActivities  = state.get('daySelectorReducer').get('similarActivities');
+  
   return {
     similarActivities,
     selectedActivity,
