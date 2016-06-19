@@ -13,7 +13,7 @@ import {
   Dimensions
 } from 'react-native';
 import ActivitiesListContainer from '../containers/ActivitiesListContainer'
-import ActivityScreen from './ActivityScreen'
+import ActivitySelectedContainer from '../containers/ActivitySelectedContainer'
 class AppNavigator extends Component {
   render() {
     return (
@@ -35,7 +35,7 @@ class AppNavigator extends Component {
       case 'ActivitiesListContainer':
         return (<ActivitiesListContainer navigator={navigator} />);
       case 'ActivityMenu':
-        return (<ActivityScreen navigator={navigator} />)
+        return (<ActivitySelectedContainer navigator={navigator} />)
     }
   }
 }
