@@ -44,11 +44,12 @@ const Thumb = ({ date, dateSelected, onPressButton }) => {
 const DaySelector = ({ dates, dateSelected, dispatch }) => {
   var _scrollView: ScrollView;
   return (
-    <View>
+    <View style={{flex: 1}}>
       <ScrollView
         ref={(scrollView) => { _scrollView = scrollView; }}
         horizontal={true}
         scrollEventThrottle={200}
+        style={{flex: 1}}
         >
         {dates.map((date, i) =>
           <Thumb

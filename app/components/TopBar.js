@@ -15,7 +15,6 @@ const TopBar = ({ title }) => (
 const styles = {
   background: {
     flex: 1,
-    justifyContent: 'center',
     backgroundColor: '#CC0814',
     alignSelf: "stretch",
     alignItems: 'center',

@@ -53,11 +53,11 @@ var styles = StyleSheet.create({
       flex: 1,
     },
     container: {
-        flex: 1,
-        flexDirection: 'column'
+      flex: 1,
+      flexDirection: 'column'
     },
     dayActivities: {
-      flex: 1,
+      flex: 0.4,
     },
     topbar: {
       flex: 0.2,
