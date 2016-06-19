@@ -12,6 +12,7 @@ import {
   ScrollView,
   Dimensions
 } from 'react-native';
+import { Actions } from 'react-native-router-flux'
 const moment = require('moment');
 const { Set } = require('immutable');
 import TopBar from './TopBar';
@@ -20,11 +21,9 @@ import DayActivitiesList from './DayActivitiesList';
 import DaySelector from './DaySelector';
 import { selectActivity } from '../actions/DaySelectorActions';
 
-const ActivitiesList = ({ title, dateSelected, activities, dispatch, selectedDayActivities, uniqueDates, navigator }) => {
+const ActivitiesList = ({ title, dateSelected, activities, dispatch, selectedDayActivities, uniqueDates }) => {
   const pushToNavigator = (activity) => {
-    navigator.replace({
-      id: 'ActivityMenu',
-    })
+    Actions.activitySelected()
     dispatch(selectActivity(activity))
   };
   return (
@@ -47,15 +46,16 @@ const ActivitiesList = ({ title, dateSelected, activities, dispatch, selectedDay
   )
 };
 var styles = StyleSheet.create({
+    container: {
+      backgroundColor: '#FFF',
+      flex: 1,
+      flexDirection: 'column'
+    },
     activitiesContainer: {
       flexDirection: 'column',
       marginLeft: 12,
       marginRight: 12,
       flex: 1,
-    },
-    container: {
-      flex: 1,
-      flexDirection: 'column'
     },
     dayActivities: {
       flex: 0.4,

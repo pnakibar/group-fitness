@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import { Router, Scene, Actions } from 'react-native-router-flux';
+
 import {
   Text,
-  View
+  View,
 } from 'react-native';
 
 const TopBar = ({ title }) => (

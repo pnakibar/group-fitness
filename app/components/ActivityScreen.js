@@ -47,6 +47,7 @@ const ActivityScreen = ({ selectedActivity, similarActivities }) => (
 
 const styles = {
   container: {
+    backgroundColor: '#FFF',
     flex: 1,
     flexDirection: 'column'
   },
