@@ -10,7 +10,8 @@ const mockup = require('./mockup.json').map((a) => {
 const initialState = Map({
   dateSelected: moment().startOf('day').clone(),
   activities: mockup,
-  title: 'Group Fitness'
+  title: 'Group Fitness',
+  selectedActivity: undefined,
 })
 
 

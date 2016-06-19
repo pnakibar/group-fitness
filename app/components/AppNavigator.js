@@ -35,7 +35,7 @@ class AppNavigator extends Component {
       case 'ActivitiesListContainer':
         return (<ActivitiesListContainer navigator={navigator} />);
       case 'ActivityMenu':
-        return (<ActivityScreen />)
+        return (<ActivityScreen navigator={navigator} />)
     }
   }
 }
