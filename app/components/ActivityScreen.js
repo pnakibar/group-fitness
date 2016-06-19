@@ -82,7 +82,9 @@ const styles = {
     fontSize: 26,
   },
   listContainer: {
-    flex: 0.5
+    flex: 0.5,
+    marginRight: 12,
+    marginLeft: 12,
   },
 };
 export default ActivityScreen;

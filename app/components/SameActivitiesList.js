@@ -45,6 +45,14 @@ const Row = ({ date, instructor, place}) => (
           {date.format('HH:MM A')}
         </Text>
       </View>
+      <View style={rowStyle.activityContainer}>
+        <Text style={rowStyle.instructor}>
+          {instructor}
+        </Text>
+        <Text style={rowStyle.place}>
+          {place}
+        </Text>
+      </View>
     </View>
   </TouchableHighlight>
 
@@ -62,7 +70,7 @@ const SameActivitiesList = ({ pressRow }) => {
     return (
       <Row
         date={rowData.date}
-        courseName={rowData.courseName}
+        instructor={rowData.instructor}
         place={rowData.place}
         onPress={pressRow}
       />
@@ -98,14 +106,12 @@ var rowStyle = StyleSheet.create({
     paddingTop: 20,
     borderBottomWidth: 1,
     borderBottomColor: '#e9e9e9',
-    backgroundColor: '#00AA00',
   },
 
   // date, first column
   dateContainer: {
-    flex: 0.3,
+    flex: 0.2,
     flexDirection: 'column',
-    backgroundColor: '#FF0000',
   },
   // first row
   day: {
@@ -121,18 +127,30 @@ var rowStyle = StyleSheet.create({
 
   // hour, second column
   hourContainer: {
-    flex: 1,
+    flex: 0.3,
     flexDirection: 'column',
-    backgroundColor: '#00FF00'
   },
   hour: {
     fontSize: 20,
     fontWeight: 'bold',
+    color: '#4a4a4a',
   },
 
+  // activity, third column
   activityContainer: {
-    flexDirection: "column",
-    flex: 0.6,
+    flex: 0.5,
+    flexDirection: 'column',
+  },
+  // instructor, first row
+  instructor: {
+    fontSize: 22,
+    fontWeight: 'bold',
+    color: '#4a4a4a',
+  },
+  // place
+  place: {
+    fontSize: 18,
+    color: '#a8a8a8',
   },
 });
 export default SameActivitiesList;
