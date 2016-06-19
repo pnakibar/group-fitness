@@ -5,6 +5,9 @@ const moment = require('moment');
 const mockup = require('./mockup.json').map((a) => {
   a.date = moment(a.date);
   return a;
+})
+.sort((left, right) => {
+  return left.date.diff(right.date);
 });
 
 
@@ -19,7 +22,6 @@ const initialState = Map({
 })
 
 const filterSimilarActivities = (activities, selectedActivity) => {
-  console.log(selectedActivity)
   const a = activities
     .filter((a) =>
       a.courseName === selectedActivity.courseName &&
