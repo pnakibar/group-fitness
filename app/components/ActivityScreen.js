@@ -4,6 +4,8 @@ import {
   View
 } from 'react-native';
 import TopBar from './TopBar';
+const moment = require('moment');
+
 const MAX_TEXT_SIZE = 160;
 const makeTextFit = (text) => {
   const t = text.slice(0, MAX_TEXT_SIZE)
@@ -27,7 +29,9 @@ const ActivityScreen = ({ title }) => (
       </View>
     </View>
     <View style={styles.monthContainer}>
-
+      <Text style={styles.month}>
+        {moment(example.date).format('MMMM Y').toUpperCase()}
+      </Text>
     </View>
     <View style={styles.listContainer}>
 
@@ -63,14 +67,18 @@ const styles = {
   readMoreButton: {
     color: '#CC0814',
     fontWeight: 'bold',
-    fontSize: 22,
+    fontSize: 20,
   },
   monthContainer: {
-    backgroundColor: '#00FFFF',
     flex: 0.1,
     alignSelf: "stretch",
     alignItems: 'center',
     justifyContent:'center',
+  },
+  month: {
+    color: '#5A5A5A',
+    fontWeight: 'bold',
+    fontSize: 26,
   },
   listContainer: {
     backgroundColor: '#FFFF00',
