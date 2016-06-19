@@ -7,17 +7,31 @@ import {
   TouchableHighlight
 } from 'react-native';
 const moment = require('moment');
+const TODAY = moment().startOf('day');
+const isToday = (date) => moment(date).clone().startOf('day').diff(TODAY) === 0;
+const Date = ({ date }) => {
+  if (isToday(date)) {
+    return (
+      <Text style={rowStyle.day}>TODAY</Text>
+    )
+  }
+  return (
+    <View>
+      <Text style={rowStyle.day}>
+        {date.format('Do').toUpperCase()}
+      </Text>
+      <Text style={rowStyle.weekDay}>
+        {date.format('ddd').toUpperCase()}
+      </Text>
+    </View>
+  )
+}
 
 const Row = ({ date, instructor, place}) => (
   <TouchableHighlight onPress={() => console.log('pressed!')}>
     <View style={rowStyle.container}>
       <View style={rowStyle.dateContainer}>
-        <Text style={rowStyle.day}>
-            {date.format('Do').toUpperCase()}
-        </Text>
-        <Text style={rowStyle.weekDay}>
-          {date.format('ddd').toUpperCase()}
-        </Text>
+        <Date date={date} />
       </View>
       <View style={rowStyle.hourContainer}>
         <Text style={rowStyle.hour}>
