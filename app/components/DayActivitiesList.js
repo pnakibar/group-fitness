@@ -36,7 +36,7 @@ const DayActivitiesList = ({ activities, pressRow}) => {
         courseName={rowData.courseName}
         place={rowData.place}
         style={styles.row}
-        onPress={pressRow}
+        onPress={() => pressRow(rowData)}
       />
     );
   }

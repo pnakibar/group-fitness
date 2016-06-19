@@ -1,5 +1,5 @@
 const { List, Map } = require('immutable');
-import { SELECT_DAY } from '../actions/DaySelectorActions';
+import { SELECT_DAY, SELECT_ACTIVITY } from '../actions/DaySelectorActions';
 import { combineReducers } from 'redux-immutable';
 const moment = require('moment');
 const mockup = require('./mockup.json').map((a) => {
@@ -19,6 +19,8 @@ function daySelectorReducer(state = initialState, action) {
   switch (action.type) {
     case SELECT_DAY:
       return state.set('dateSelected', action.date);
+    case SELECT_ACTIVITY:
+      return state.set('selectedActivity', action.activity)
     default:
       return state;
   }

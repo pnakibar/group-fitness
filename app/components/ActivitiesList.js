@@ -17,15 +17,16 @@ const { Set } = require('immutable');
 import TopBar from './TopBar';
 import SelectedDate from './SelectedDate';
 import DayActivitiesList from './DayActivitiesList';
-import DaySelector from './DaySelector'
+import DaySelector from './DaySelector';
+import { selectActivity } from '../actions/DaySelectorActions';
 
 const ActivitiesList = ({ title, dateSelected, activities, dispatch, selectedDayActivities, uniqueDates, navigator }) => {
-  const pushToNavigator = (idActivity) => {
-    console.log('called');
+  const pushToNavigator = (activity) => {
     navigator.replace({
       id: 'ActivityMenu',
     })
-  }
+    dispatch(selectActivity(activity))
+  };
   return (
     <View style={styles.container}>
       <View style={styles.topbar}>

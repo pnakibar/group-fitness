@@ -36,15 +36,7 @@ const Row = ({ date, instructor, place}) => (
   </TouchableHighlight>
 
 )
-// Props filteredActivities
-const activities = [
-  {
-      date: moment(),
-      instructor: 'Instructor Teste',
-      place: 'Place Teste'
-  },
-]
-const SameActivitiesList = ({ pressRow }) => {
+const SameActivitiesList = ({ activities, pressRow }) => {
   const _renderRow = (rowData) => {
     return (
       <Row

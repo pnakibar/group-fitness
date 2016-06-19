@@ -1,4 +1,5 @@
 export const SELECT_DAY = 'SELECT_DAY';
+export const SELECT_ACTIVITY = 'SELECT_ACTIVITY';
 
 export function selectDay (date) {
   return {
@@ -6,3 +7,10 @@ export function selectDay (date) {
     date,
   };
 };
+
+export function selectActivity (activity) {
+  return {
+    type: SELECT_ACTIVITY,
+    activity
+  }
+}
