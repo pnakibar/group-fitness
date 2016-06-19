@@ -1,66 +1,31 @@
 import React, { Component } from 'react';
+import { Router, Scene } from 'react-native-router-flux';
 import {
-  AppRegistry,
-  StyleSheet,
   Text,
   View,
-  Image,
-  StatusBar,
-  Navigator,
-  TouchableHighlight,
-  TouchableOpacity,
-  ScrollView,
-  Dimensions
+  TouchableHighlight
 } from 'react-native';
+
 import ActivitiesListContainer from '../containers/ActivitiesListContainer'
 import ActivitySelectedContainer from '../containers/ActivitySelectedContainer'
-class AppNavigator extends Component {
+
+const Sample = () => (
+  <View>
+    <Text>
+      HI!
+    </Text>
+  </View>
+)
+
+export default class App extends Component {
   render() {
     return (
-      <Navigator
-          initialRoute={{id: 'ActivitiesListContainer', name: 'Index'}}
-          renderScene={this.renderScene.bind(this)}
-          configureScene={(route) => {
-            if (route.sceneConfig) {
-              return route.sceneConfig;
-            }
-            return Navigator.SceneConfigs.FloatFromRight;
-          }} />
-    );
-  }
-
-  renderScene(route, navigator) {
-    var routeId = route.id;
-    switch (route.id) {
-      case 'ActivitiesListContainer':
-        return (<ActivitiesListContainer navigator={navigator} />);
-      case 'ActivityMenu':
-        return (<ActivitySelectedContainer navigator={navigator} />)
-    }
+      <Router>
+        <Scene key="root" hideNavBar={true} >
+          <Scene key="activitiesList" component={ActivitiesListContainer} initial={true} />
+          <Scene key="activitySelected" component={ActivitySelectedContainer} />
+        </Scene>
+      </Router>
+    )
   }
 }
-
-var styles = StyleSheet.create({
-    activitiesContainer: {
-      flexDirection: 'column',
-      marginLeft: 12,
-      marginRight: 12,
-      flex: 1,
-    },
-    container: {
-        flex: 1,
-        flexDirection: 'column'
-    },
-    dayActivities: {
-      flex: 1,
-    },
-    topbar: {
-      flex: 0.2,
-    },
-    daySelector: {
-      flex: 0.4,
-    },
-});
-
-
-export default AppNavigator;

@@ -10,9 +10,6 @@ const mockup = require('./mockup.json').map((a) => {
   return left.date.diff(right.date);
 });
 
-
-
-
 const initialState = Map({
   dateSelected: moment().startOf('day').clone(),
   activities: mockup,
