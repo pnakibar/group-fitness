@@ -44,12 +44,11 @@ const Thumb = ({ date, dateSelected, onPressButton }) => {
 const DaySelector = ({ dates, dateSelected, dispatch }) => {
   var _scrollView: ScrollView;
   return (
-    <View style={{flex: 1}}>
+    <View style={rightStyle.container}>
       <ScrollView
         ref={(scrollView) => { _scrollView = scrollView; }}
         horizontal={true}
         scrollEventThrottle={200}
-        style={{flex: 1}}
         >
         {dates.map((date, i) =>
           <Thumb
@@ -63,6 +62,18 @@ const DaySelector = ({ dates, dateSelected, dispatch }) => {
     </View>
   );
 };
+
+const rightStyle = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  scrollView: {
+    flex: 1,
+  },
+  box: {
+    flex: 0.2,
+  },
+})
 
 const styles = {
   date: {
@@ -85,11 +96,10 @@ const styles = {
     },
     normal: {
       box: {
+        flex: 0.2,
         justifyContent:'center',
         marginLeft: 1,
         marginRight: 1,
-        width: 140,
-        height: 140,
         alignItems: 'center',
         backgroundColor: '#E7E7E7',
       },
@@ -102,4 +112,5 @@ const styles = {
 
   }
 };
+
 export default DaySelector;

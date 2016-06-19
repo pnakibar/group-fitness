@@ -28,17 +28,17 @@ const ActivitiesList = ({ title, dateSelected, activities, dispatch, selectedDay
   };
   return (
     <View style={styles.container}>
-      <View style={styles.topbar}>
+      <View style={styles.topbarContainer}>
         <TopBar title={title}/>
       </View>
-      <View style={styles.daySelector}>
+      <View style={styles.datePickerContainer}>
         <DaySelector dateSelected={dateSelected} dates={uniqueDates} dispatch={dispatch}/>
       </View>
       <View style={styles.activitiesContainer}>
         <View>
           <SelectedDate date={dateSelected} />
         </View>
-        <View style={styles.dayActivities}>
+        <View style={styles.listContainer}>
           <DayActivitiesList activities={selectedDayActivities} pressRow={pushToNavigator}/>
         </View>
       </View>
@@ -51,20 +51,24 @@ var styles = StyleSheet.create({
       flex: 1,
       flexDirection: 'column'
     },
+    topbarContainer: {
+      flex: 0.15,
+    },
+    datePickerContainer: {
+      flex: 0.2,
+      backgroundColor: '#FF0',
+    },
     activitiesContainer: {
+      backgroundColor: '#F00',
       flexDirection: 'column',
       marginLeft: 12,
       marginRight: 12,
-      flex: 1,
+      flex: 0.65,
     },
-    dayActivities: {
-      flex: 0.4,
+    listContainer: {
+      backgroundColor: '#0FF',
     },
-    topbar: {
-      flex: 0.2,
-    },
-    daySelector: {
-      flex: 0.4,
-    },
+
+
 });
 export default ActivitiesList;
