@@ -109,13 +109,13 @@ var rowStyle = StyleSheet.create({
   },
   // first row
   day: {
-      fontSize: 24,
+      fontSize: 22,
       fontWeight: 'bold',
       color: '#CC0814',
   },
   // second row
   weekDay: {
-    fontSize: 20,
+    fontSize: 18,
     color: '#a8a8a8',
   },
 
@@ -126,7 +126,8 @@ var rowStyle = StyleSheet.create({
     backgroundColor: '#00FF00'
   },
   hour: {
-
+    fontSize: 20,
+    fontWeight: 'bold',
   },
 
   activityContainer: {
