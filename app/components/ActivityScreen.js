@@ -4,6 +4,7 @@ import {
   View
 } from 'react-native';
 import TopBar from './TopBar';
+import SameActivitiesList from './SameActivitiesList';
 const moment = require('moment');
 
 const MAX_TEXT_SIZE = 160;
@@ -34,7 +35,7 @@ const ActivityScreen = ({ title }) => (
       </Text>
     </View>
     <View style={styles.listContainer}>
-
+      <SameActivitiesList />
     </View>
   </View>
 )
@@ -81,7 +82,6 @@ const styles = {
     fontSize: 26,
   },
   listContainer: {
-    backgroundColor: '#FFFF00',
     flex: 0.5
   },
 };
