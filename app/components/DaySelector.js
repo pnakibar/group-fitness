@@ -4,6 +4,7 @@ import { selectDay } from '../actions/DaySelectorActions';
 import {
   AppRegistry,
   StyleSheet,
+  ListView,
   Text,
   View,
   Image,
@@ -21,19 +22,19 @@ const Thumb = ({ date, dateSelected, onPressButton }) => {
   const [dayText, dayNumber] = formatedDate;
   const isDateSelected = dateSelected.startOf('day').diff(moment(date).startOf('day')) === 0;
   const boxStyle = isDateSelected ?
-    [styles.date.normal.box, styles.date.selected.box] :
-    styles.date.normal.box;
+    [styles.box, styles.boxSelected] :
+    styles.box;
   const textStyle = isDateSelected ?
-    [styles.date.normal.text, styles.date.selected.text] :
-    styles.date.normal.text;
+    styles.textSelected :
+    styles.text
 
   return (
     <TouchableHighlight onPress={onPressButton}>
       <View style={boxStyle}>
-        <Text style={[...textStyle, styles.date.text.top]}>
+        <Text style={[textStyle, styles.dayOfWeek]}>
           {dayText.toUpperCase()}
         </Text>
-        <Text style={[...textStyle, styles.date.text.bottom]}>
+        <Text style={[textStyle, styles.dayOfMonth]}>
           {dayNumber}
         </Text>
       </View>
@@ -42,75 +43,61 @@ const Thumb = ({ date, dateSelected, onPressButton }) => {
 };
 
 const DaySelector = ({ dates, dateSelected, dispatch }) => {
-  var _scrollView: ScrollView;
+  const _renderRow = (date) => (
+    <Thumb
+      date={date}
+      dateSelected={dateSelected}
+      onPressButton={() => dispatch(selectDay(moment(date)))}
+    />
+  )
+
+  const emptyDataSource = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+  const dataSource = emptyDataSource.cloneWithRows(dates)
+
   return (
-    <View style={rightStyle.container}>
-      <ScrollView
-        ref={(scrollView) => { _scrollView = scrollView; }}
-        horizontal={true}
-        scrollEventThrottle={200}
-        >
-        {dates.map((date, i) =>
-          <Thumb
-            key={i}
-            date={date}
-            dateSelected={dateSelected}
-            onPressButton={() => dispatch(selectDay(moment(date)))}
-          />
-        )}
-      </ScrollView>
-    </View>
+    <ListView
+      automaticallyAdjustContentInsets={false}
+      dataSource={dataSource}
+      enableEmptySections={true}
+      renderRow={_renderRow}
+      horizontal={true}
+      contentContainerStyle={styles.listView}
+    />
   );
 };
 
-const rightStyle = StyleSheet.create({
-  container: {
+const styles = StyleSheet.create({
+  listView: {
     flex: 1,
-  },
-  scrollView: {
-    flex: 1,
+    backgroundColor: '#0F0',
+    justifyContent: 'space-between',
+    flexWrap: 'nowrap',
   },
   box: {
-    flex: 0.2,
+    justifyContent:'center',
+    marginLeft: 1,
+    marginRight: 1,
+    flex: 0.5,
+    flexDirection: 'column',
+    alignItems: 'center',
+    backgroundColor: '#E7E7E7',
   },
-})
-
-const styles = {
-  date: {
-    text: {
-      top: {
-        fontSize: 16,
-      },
-      bottom: {
-        fontWeight: 'bold',
-        fontSize: 42,
-      },
-    },
-    selected: {
-      box: {
-        backgroundColor: '#CC0814',
-      },
-      text: {
-        color: "#FFF",
-      }
-    },
-    normal: {
-      box: {
-        flex: 0.2,
-        justifyContent:'center',
-        marginLeft: 1,
-        marginRight: 1,
-        alignItems: 'center',
-        backgroundColor: '#E7E7E7',
-      },
-      text: {
-
-      }
-    },
+  boxSelected: {
+    backgroundColor: '#CC0814',
   },
-  selector: {
-
+  dayOfWeek: {
+    fontSize: 16,
+  },
+  dayOfMonth: {
+    fontWeight: 'bold',
+    fontSize: 42,
+  },
+  text: {
+    color: '#5A5A5A',
+  },
+  textSelected: {
+    color: "#FFF",
   }
-};
+});
 
 export default DaySelector;

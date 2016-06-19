@@ -56,7 +56,6 @@ var styles = StyleSheet.create({
     },
     datePickerContainer: {
       flex: 0.2,
-      backgroundColor: '#FF0',
     },
     activitiesContainer: {
       backgroundColor: '#F00',
