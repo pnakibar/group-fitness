@@ -6,29 +6,8 @@ import {
   StyleSheet,
   TouchableHighlight
 } from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialIcons';
-import SelectedDate from './SelectedDate'
-const nextIcon = (<Icon name="chevron-right" size={48} color="#b2b2b2" />)
 const moment = require('moment');
 
-/*
-const Row = ({ date, courseName, place, onPress }) => (
-  <TouchableHighlight onPress={onPress}>
-    <View style={rowStyle.container}>
-        <View style={rowStyle.timeContainer}>
-          <Text style={rowStyle.hour}>{date.clone().format('HH:MM A')}</Text>
-        </View>
-        <View style={rowStyle.activityContainer} >
-          <Text style={rowStyle.course}>{courseName.toUpperCase()}</Text>
-          <Text style={rowStyle.place}>{place.toUpperCase()}</Text>
-        </View>
-        <View style={rowStyle.iconContainer}>
-          {nextIcon}
-        </View>
-    </View>
-  </TouchableHighlight>
-)
-*/
 const Row = ({ date, instructor, place}) => (
   <TouchableHighlight onPress={() => console.log('pressed!')}>
     <View style={rowStyle.container}>

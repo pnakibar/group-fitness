@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import {
   Text,
-  View
+  View,
+  TouchableHighlight
 } from 'react-native';
 import TopBar from './TopBar';
 import SameActivitiesList from './SameActivitiesList';
@@ -13,7 +14,11 @@ const makeTextFit = (text) => {
   if (text.length > MAX_TEXT_SIZE) return t + '...'
   return t;
 };
-const ReadMore = (text) => (<Text style={styles.readMoreButton}>READ MORE</Text>)
+const ReadMore = (text) => (
+  <TouchableHighlight onPress={() => console.log('pressed!')}>
+    <Text style={styles.readMoreButton}>READ MORE</Text>
+  </TouchableHighlight>
+);
 const ActivityScreen = ({ title }) => (
   <View style={styles.container}>
     <View style={styles.topbarContainer}>
