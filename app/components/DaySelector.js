@@ -20,20 +20,27 @@ import SelectedDate from './SelectedDate'
 class Thumb extends Component {
   _onLayoutEvent(event) {
     this.setState({componentHeight: event.nativeEvent.layout.height});
-    console.log('opa');
   }
   constructor () {
     super();
     this._onLayoutEvent = this._onLayoutEvent.bind(this);
+    this._isDateSelected = this._isDateSelected .bind(this);
     this.state = {
       componentHeight: 0,
     }
   }
+
+  _isDateSelected () {
+    const { date, dateSelected } = this.props;
+    return dateSelected.startOf('day').diff(moment(date).startOf('day')) === 0;
+
+  }
+
   render() {
     const { date, dateSelected, onPressButton } = this.props;
     const formatedDate = moment(date).format('ddd D').split(' ');
     const [dayText, dayNumber] = formatedDate;
-    const isDateSelected = dateSelected.startOf('day').diff(moment(date).startOf('day')) === 0;
+    const isDateSelected = this._isDateSelected();
     let boxStyle = isDateSelected ?
       [styles.box, styles.boxSelected] :
       styles.box;
@@ -63,7 +70,28 @@ class Thumb extends Component {
 }
 
 class DaySelector extends Component {
-  _renderRow (date) {
+  constructor () {
+    super();
+    this._renderRow = this._renderRow.bind(this);
+    this._onLayoutEvent = this._onLayoutEvent.bind(this);
+    this.state = {
+      componentHeight: 0,
+      componentWidth: 0,
+    }
+  }
+
+  componentDidMount () {
+  }
+
+  _onLayoutEvent(event) {
+    const { height, width } = event.nativeEvent.layout
+    this.setState({
+      componentHeight: height,
+      componentWidth: width,
+    });
+  }
+
+  _renderRow (date, id, index) {
     return (
       <Thumb
         date={date}
@@ -73,25 +101,17 @@ class DaySelector extends Component {
     )
   }
 
-  constructor () {
-    super();
-    this._renderRow = this._renderRow.bind(this);
-  }
-
   render () {
     const { dates, dateSelected, dispatch } = this.props;
+
     const emptyDataSource = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     const dataSource = emptyDataSource.cloneWithRows(dates)
 
-    const width = Dimensions.get('window').width;
-    const listViewContainerDimesions = {
-      height: width,
-      width
-    };
-    const _listView = ListView
     return (
-      <View style={styles.listViewContainer} >
+      <View style={styles.listViewContainer} onLayout={this._onLayoutEvent}>
         <ListView
+          ref={(component) => this._listView = component}
+          style={{flex: 1}}
           automaticallyAdjustContentInsets={false}
           dataSource={dataSource}
           enableEmptySections={true}
