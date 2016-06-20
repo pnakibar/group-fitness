@@ -7,9 +7,11 @@ const mapStateToProps = (state) => {
   const activities = state.get('daySelectorReducer').get('activities');
   const uniqueDates = Set(activities.map((a) => moment(a.date).clone().startOf('day')))
     .toArray()
+    .filter((d) => moment().startOf('day').diff(d) <= 0)
     .sort((left, right) => {
       return left.diff(right)
     })
+  uniqueDates.forEach((x) => console.log(x));
   const dateSelected = state.get('daySelectorReducer').get('dateSelected');
   const selectedDayActivities = activities.filter((a) => {
     const startOfIterDate = a.date.clone().startOf('day');
