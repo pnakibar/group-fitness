@@ -4,14 +4,14 @@ import {
   View,
   ListView,
   StyleSheet,
-  TouchableHighlight
+  TouchableNativeFeedback
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import SelectedDate from './SelectedDate'
 const nextIcon = (<Icon name="chevron-right" size={48} color="#b2b2b2" />)
 
 const Row = ({ date, courseName, place, onPress }) => (
-  <TouchableHighlight onPress={onPress}>
+  <TouchableNativeFeedback onPress={onPress}>
     <View style={rowStyle.container}>
         <View style={rowStyle.timeContainer}>
           <Text style={rowStyle.hour}>{date.clone().format('HH:MM A')}</Text>
@@ -24,7 +24,7 @@ const Row = ({ date, courseName, place, onPress }) => (
           {nextIcon}
         </View>
     </View>
-  </TouchableHighlight>
+  </TouchableNativeFeedback>
 )
 
 const DayActivitiesList = ({ activities, pressRow}) => {

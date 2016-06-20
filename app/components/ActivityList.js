@@ -4,7 +4,7 @@ import {
   View,
   ListView,
   StyleSheet,
-  TouchableHighlight
+  TouchableNativeFeedback
 } from 'react-native';
 const moment = require('moment');
 const TODAY = moment().startOf('day');
@@ -28,7 +28,7 @@ const Date = ({ date }) => {
 }
 
 const Row = ({ date, instructor, place}) => (
-  <TouchableHighlight onPress={() => console.log('pressed!')}>
+  <TouchableNativeFeedback onPress={() => console.log('pressed!')}>
     <View style={rowStyle.container}>
       <View style={rowStyle.dateContainer}>
         <Date date={date} />
@@ -47,7 +47,7 @@ const Row = ({ date, instructor, place}) => (
         </Text>
       </View>
     </View>
-  </TouchableHighlight>
+  </TouchableNativeFeedback>
 
 )
 const ActivityList = ({ activities, pressRow }) => {

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {
   Text,
   View,
-  TouchableHighlight
+  TouchableNativeFeedback
 } from 'react-native';
 import TopBar from './TopBar';
 import ActivityList from './ActivityList';
@@ -15,9 +15,11 @@ const makeTextFit = (text) => {
   return t;
 };
 const ReadMore = () => (
-  <TouchableHighlight onPress={() => console.log('pressed!')}>
-    <Text style={styles.readMoreButton}>READ MORE</Text>
-  </TouchableHighlight>
+  <TouchableNativeFeedback onPress={() => console.log('pressed!')}>
+    <View>
+      <Text style={styles.readMoreButton}>{"READ MORE"}</Text>
+    </View>
+  </TouchableNativeFeedback>
 );
 const ActivityScreen = ({ selectedActivity, similarActivities }) => (
   <View style={styles.container}>
