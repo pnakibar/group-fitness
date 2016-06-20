@@ -79,9 +79,6 @@ const DaySelector = ({ dates, dateSelected, dispatch }) => {
     />
   )
 
-  dates.push(dates[0]);
-  dates.push(dates[0]);
-  dates.push(dates[0]);
   const emptyDataSource = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
   const dataSource = emptyDataSource.cloneWithRows(dates)
 
@@ -113,7 +110,6 @@ const styles = StyleSheet.create({
   },
   listView: {
     flex: 1,
-    backgroundColor: '#0F0',
     justifyContent: 'space-around',
     flexWrap: 'nowrap',
   },

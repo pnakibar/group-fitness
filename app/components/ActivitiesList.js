@@ -65,7 +65,6 @@ var styles = StyleSheet.create({
     },
     listContainer: {
       flex: 1,
-      backgroundColor: '#0FF',
     },
 
 
