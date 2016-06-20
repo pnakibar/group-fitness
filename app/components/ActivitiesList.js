@@ -1,20 +1,9 @@
 import React, { Component } from 'react';
 import {
-  AppRegistry,
   StyleSheet,
-  Text,
   View,
-  Image,
-  StatusBar,
-  Navigator,
-  TouchableHighlight,
-  TouchableOpacity,
-  ScrollView,
-  Dimensions
 } from 'react-native';
 import { Actions } from 'react-native-router-flux'
-const moment = require('moment');
-const { Set } = require('immutable');
 import TopBar from './TopBar';
 import SelectedDate from './SelectedDate';
 import DayActivitiesList from './DayActivitiesList';
