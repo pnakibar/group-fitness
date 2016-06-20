@@ -13,8 +13,8 @@ export default class App extends Component {
     return (
       <Router>
         <Scene key="root" hideNavBar={true} >
-          <Scene key="activitiesList" component={ActivitiesScreenContainer} initial={true} />
-          <Scene key="activitySelected" component={ActivitySelectedContainer} />
+          <Scene key="activitiesScreen" component={ActivitiesScreenContainer} initial={true} />
+          <Scene key="activityScreen" component={ActivitySelectedContainer} />
         </Scene>
       </Router>
     )

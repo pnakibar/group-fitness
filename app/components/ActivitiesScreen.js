@@ -12,7 +12,7 @@ import { selectActivity } from '../actions/DaySelectorActions';
 
 const ActivitiesScreen = ({ title, dateSelected, activities, dispatch, selectedDayActivities, uniqueDates }) => {
   const pushToNavigator = (activity) => {
-    Actions.activitySelected()
+    Actions.activityScreen()
     dispatch(selectActivity(activity))
   };
   return (
