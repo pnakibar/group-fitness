@@ -27,8 +27,8 @@ const mapStateToProps = (state) => {
   };
 };
 
-const ActivitiesListContainer = connect(
+const ActivitiesScreenContainer = connect(
   mapStateToProps
 )(ActivitiesScreen);
 
-export default ActivitiesListContainer;
+export default ActivitiesScreenContainer;

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Router, Scene, Actions } from 'react-native-router-flux';
 import { BackAndroid } from 'react-native';
 
-import ActivitiesListContainer from '../containers/ActivitiesListContainer'
+import ActivitiesScreenContainer from '../containers/ActivitiesScreenContainer'
 import ActivitySelectedContainer from '../containers/ActivitySelectedContainer'
 
 export default class App extends Component {
@@ -13,7 +13,7 @@ export default class App extends Component {
     return (
       <Router>
         <Scene key="root" hideNavBar={true} >
-          <Scene key="activitiesList" component={ActivitiesListContainer} initial={true} />
+          <Scene key="activitiesList" component={ActivitiesScreenContainer} initial={true} />
           <Scene key="activitySelected" component={ActivitySelectedContainer} />
         </Scene>
       </Router>
