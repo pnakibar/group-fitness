@@ -9,7 +9,6 @@ import {
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import SelectedDate from './SelectedDate'
 const nextIcon = (<Icon name="chevron-right" size={48} color="#b2b2b2" />)
-const moment = require('moment');
 
 const Row = ({ date, courseName, place, onPress }) => (
   <TouchableHighlight onPress={onPress}>
@@ -27,7 +26,7 @@ const Row = ({ date, courseName, place, onPress }) => (
     </View>
   </TouchableHighlight>
 )
-// Props filteredActivities
+
 const DayActivitiesList = ({ activities, pressRow}) => {
   const _renderRow = (rowData) => {
     return (
