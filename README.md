@@ -1,9 +1,9 @@
 # group-fitness
 ## Run
 ### Pre-requisites
-- Android Emulator
-- React-native
-- [Setting up the environment](https://facebook.github.io/react-native/docs/getting-started.html#content)
+- Android Emulator & React-native environment
+  - [Setting up the environment](https://facebook.github.io/react-native/docs/getting-started.html#content)
+- [rnpm](https://github.com/rnpm/rnpm)
 
 ### Android
 #### Start the Android Emulator
@@ -13,6 +13,8 @@ emulator -avd 'avd name'
 ```
 #### Serve the content
 ```bash
+npm install
+rnpm link
 react-native run-android
 npm start
 ```
