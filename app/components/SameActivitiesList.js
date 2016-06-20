@@ -62,13 +62,6 @@ const SameActivitiesList = ({ activities, pressRow }) => {
     );
   }
 
-  const _renderSectionHeader = (data, sectionId) => {
-    var text;
-    return (
-      <SelectedDate date={this.props.SelectedDate} />
-    )
-  }
-
   const emptyDataSource = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
   const dataSource = emptyDataSource.cloneWithRows(activities);
 
