@@ -50,7 +50,7 @@ const Row = ({ date, instructor, place}) => (
   </TouchableHighlight>
 
 )
-const SameActivitiesList = ({ activities, pressRow }) => {
+const ActivityList = ({ activities, pressRow }) => {
   const _renderRow = (rowData) => {
     return (
       <Row
@@ -131,4 +131,4 @@ var rowStyle = StyleSheet.create({
     color: '#a8a8a8',
   },
 });
-export default SameActivitiesList;
+export default ActivityList;

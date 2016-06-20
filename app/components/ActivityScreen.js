@@ -5,7 +5,7 @@ import {
   TouchableHighlight
 } from 'react-native';
 import TopBar from './TopBar';
-import SameActivitiesList from './SameActivitiesList';
+import ActivityList from './ActivityList';
 const moment = require('moment');
 
 const MAX_TEXT_SIZE = 160;
@@ -40,7 +40,7 @@ const ActivityScreen = ({ selectedActivity, similarActivities }) => (
       </Text>
     </View>
     <View style={styles.listContainer}>
-      <SameActivitiesList activities={similarActivities}/>
+      <ActivityList activities={similarActivities}/>
     </View>
   </View>
 )
