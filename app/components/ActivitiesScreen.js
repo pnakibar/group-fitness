@@ -10,7 +10,7 @@ import DayActivitiesList from './DayActivitiesList';
 import DaySelector from './DaySelector';
 import { selectActivity } from '../actions/DaySelectorActions';
 
-const ActivitiesList = ({ title, dateSelected, activities, dispatch, selectedDayActivities, uniqueDates }) => {
+const ActivitiesScreen = ({ title, dateSelected, activities, dispatch, selectedDayActivities, uniqueDates }) => {
   const pushToNavigator = (activity) => {
     Actions.activitySelected()
     dispatch(selectActivity(activity))
@@ -63,4 +63,4 @@ var styles = StyleSheet.create({
 
 
 });
-export default ActivitiesList;
+export default ActivitiesScreen;

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import ActivitiesList from '../components/ActivitiesList';
+import ActivitiesScreen from '../components/ActivitiesScreen';
 const moment = require('moment');
 const { Set } = require('immutable');
 
@@ -29,6 +29,6 @@ const mapStateToProps = (state) => {
 
 const ActivitiesListContainer = connect(
   mapStateToProps
-)(ActivitiesList);
+)(ActivitiesScreen);
 
 export default ActivitiesListContainer;
