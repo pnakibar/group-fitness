@@ -1,4 +1,4 @@
-package com.awesomeproject;
+package com.groupfitness;
 
 import com.facebook.react.ReactActivity;
 import com.oblador.vectoricons.VectorIconsPackage;
@@ -16,7 +16,7 @@ public class MainActivity extends ReactActivity {
      */
     @Override
     protected String getMainComponentName() {
-        return "AwesomeProject";
+        return "GroupFitness";
     }
 
     /**
