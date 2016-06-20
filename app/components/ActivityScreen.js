@@ -14,7 +14,7 @@ const makeTextFit = (text) => {
   if (text.length > MAX_TEXT_SIZE) return t + '...'
   return t;
 };
-const ReadMore = (text) => (
+const ReadMore = () => (
   <TouchableHighlight onPress={() => console.log('pressed!')}>
     <Text style={styles.readMoreButton}>READ MORE</Text>
   </TouchableHighlight>
