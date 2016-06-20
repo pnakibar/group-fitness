@@ -2,18 +2,11 @@ const moment = require('moment');
 import React, { Component } from 'react';
 import { selectDay } from '../actions/DaySelectorActions';
 import {
-  AppRegistry,
   StyleSheet,
   ListView,
   Text,
   View,
-  Image,
-  StatusBar,
-  Navigator,
   TouchableHighlight,
-  TouchableOpacity,
-  ScrollView,
-  Dimensions
 } from 'react-native';
 import SelectedDate from './SelectedDate'
 
@@ -73,22 +66,6 @@ class DaySelector extends Component {
   constructor () {
     super();
     this._renderRow = this._renderRow.bind(this);
-    this._onLayoutEvent = this._onLayoutEvent.bind(this);
-    this.state = {
-      componentHeight: 0,
-      componentWidth: 0,
-    }
-  }
-
-  componentDidMount () {
-  }
-
-  _onLayoutEvent(event) {
-    const { height, width } = event.nativeEvent.layout
-    this.setState({
-      componentHeight: height,
-      componentWidth: width,
-    });
   }
 
   _renderRow (date, id, index) {
@@ -108,7 +85,7 @@ class DaySelector extends Component {
     const dataSource = emptyDataSource.cloneWithRows(dates)
 
     return (
-      <View style={styles.listViewContainer} onLayout={this._onLayoutEvent}>
+      <View style={styles.listViewContainer} >
         <ListView
           ref={(component) => this._listView = component}
           style={{flex: 1}}
