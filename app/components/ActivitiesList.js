@@ -58,13 +58,13 @@ var styles = StyleSheet.create({
       flex: 0.2,
     },
     activitiesContainer: {
-      backgroundColor: '#F00',
       flexDirection: 'column',
       marginLeft: 12,
       marginRight: 12,
       flex: 0.65,
     },
     listContainer: {
+      flex: 1,
       backgroundColor: '#0FF',
     },
 
