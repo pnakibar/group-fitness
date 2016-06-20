@@ -9,7 +9,7 @@ const moment = require('moment');
 const SelectedDate = ({ date }) => (
   <View>
     <Text style={styles.text}>
-      {moment(date).format('MMMM D, YYYY')}
+      {moment(date).format('MMMM D, YYYY').toUpperCase()}
     </Text>
   </View>
 )
@@ -21,8 +21,9 @@ const styles = {
     marginLeft: 12,
   },
   text: {
-    color: "#656565",
-    fontSize: 28,
+    color: "#4a4a4a",
+    fontSize: 24,
+    fontWeight: 'bold',
   },
 };
 export default SelectedDate;

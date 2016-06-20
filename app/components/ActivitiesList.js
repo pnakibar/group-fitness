@@ -35,7 +35,7 @@ const ActivitiesList = ({ title, dateSelected, activities, dispatch, selectedDay
         <DaySelector dateSelected={dateSelected} dates={uniqueDates} dispatch={dispatch}/>
       </View>
       <View style={styles.activitiesContainer}>
-        <View>
+        <View style={styles.selectedDateContainer}>
           <SelectedDate date={dateSelected} />
         </View>
         <View style={styles.listContainer}>
@@ -63,8 +63,13 @@ var styles = StyleSheet.create({
       marginRight: 12,
       flex: 0.65,
     },
+    selectedDateContainer: {
+      flex: 0.15,
+      alignSelf: "stretch",
+      justifyContent:'center',
+    },
     listContainer: {
-      flex: 1,
+      flex: 0.85,
     },
 
 
