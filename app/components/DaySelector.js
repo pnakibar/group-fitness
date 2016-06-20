@@ -29,13 +29,6 @@ class Thumb extends Component {
       componentHeight: 0,
     }
   }
-  /*
-  getInitialState() {
-    return {
-      componentHeight: 0,
-    }
-  }
-  */
   render() {
     const { date, dateSelected, onPressButton } = this.props;
     const formatedDate = moment(date).format('ddd D').split(' ');
@@ -69,43 +62,50 @@ class Thumb extends Component {
 
 }
 
-let boxHeight;
-const DaySelector = ({ dates, dateSelected, dispatch }) => {
-  const _renderRow = (date) => (
-    <Thumb
-      date={date}
-      dateSelected={dateSelected}
-      onPressButton={() => dispatch(selectDay(moment(date)))}
-    />
-  )
-
-  const emptyDataSource = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-  const dataSource = emptyDataSource.cloneWithRows(dates)
-
-  const width = Dimensions.get('window').width;
-  const listViewContainerDimesions = {
-    height: width,
-    width
-  };
-
-
-  return (
-    <View style={styles.listViewContainer} >
-      <ListView
-        automaticallyAdjustContentInsets={false}
-        dataSource={dataSource}
-        enableEmptySections={true}
-        renderRow={_renderRow}
-        horizontal={true}
-        contentContainerStyle={styles.listView}
+class DaySelector extends Component {
+  _renderRow (date) {
+    return (
+      <Thumb
+        date={date}
+        dateSelected={this.props.dateSelected}
+        onPressButton={() => this.props.dispatch(selectDay(moment(date)))}
       />
-    </View>
-  );
-};
+    )
+  }
+
+  constructor () {
+    super();
+    this._renderRow = this._renderRow.bind(this);
+  }
+
+  render () {
+    const { dates, dateSelected, dispatch } = this.props;
+    const emptyDataSource = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+    const dataSource = emptyDataSource.cloneWithRows(dates)
+
+    const width = Dimensions.get('window').width;
+    const listViewContainerDimesions = {
+      height: width,
+      width
+    };
+    const _listView = ListView
+    return (
+      <View style={styles.listViewContainer} >
+        <ListView
+          automaticallyAdjustContentInsets={false}
+          dataSource={dataSource}
+          enableEmptySections={true}
+          renderRow={this._renderRow}
+          horizontal={true}
+          contentContainerStyle={styles.listView}
+        />
+      </View>
+    );
+  }
+}
 
 const styles = StyleSheet.create({
   listViewContainer: {
-    // width: Dimensions.get('window').width,
     flex: 1,
   },
   listView: {
