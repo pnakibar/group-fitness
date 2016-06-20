@@ -1,17 +1,4 @@
 import React, { Component } from 'react';
-import {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  StatusBar,
-  Navigator,
-  TouchableHighlight,
-  TouchableOpacity,
-  ScrollView,
-  Dimensions
-} from 'react-native';
 import { createStore, applyMiddleware } from 'redux';
 import { combineReducers } from 'redux-immutable';
 import { Provider } from 'react-redux';
